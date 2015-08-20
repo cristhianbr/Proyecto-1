@@ -1,0 +1,1 @@
+void mostrar_registro(int reg[12]);
