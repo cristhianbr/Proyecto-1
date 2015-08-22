@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	int reg[13];
+	long int reg[13];
 	registros(reg[13]);
 
 	return 0;
