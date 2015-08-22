@@ -1,1 +1,1 @@
-void mostrar_registro(int reg[12]);
+void mostrar_registro(unsigned long int reg[13]);
