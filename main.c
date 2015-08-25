@@ -6,7 +6,7 @@
 int main(void)
 {
 	long int reg[13];
-	registros(reg[13]);
+	mostrar_registro(reg);
 
 	return 0;
 }
