@@ -20,5 +20,10 @@ void ROR(uint32_t *Rdn, uint32_t Rm) // Funcion para rotar registro a la derecha
 
 void ASRS(uint32_t *Rdn, uint32_t Rm);
 {
-	
+
+	int32_t b;
+	b=(int32_t)(*Rdn);
+	b=b/pow(2,Rm);
+	*Rdn=(uint32_t)(b);
 }
+	
