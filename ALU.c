@@ -1,10 +1,10 @@
 #include "ALU.h"
 
-void add(unsigned  uint32_t *Rp, uint32_t Rm, uint32_t Rn)	//funcion de la suma aritmetica
+void add(uint32_t *Rp, uint32_t Rm, uint32_t Rn)	//funcion de la suma aritmetica
 {
 	*Rp=Rm+Rn;
 }
-void and(uint32_t *Rp, uint32_t Rm, uint32_t Rn)	//funcion de la multiplicacion logica
+void and(uint32_t *Rp,uint32_t Rm, uint32_t Rn)	//funcion de la multiplicacion logica
 {
 	*Rp=Rm&Rn;
 }
