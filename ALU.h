@@ -1,10 +1,11 @@
+#include <stdint.h>
 /**
 *\brief Funcion que ejecuta una suma aritmetica.
 *\param *Rp Direccion en donde se guardara el resultado de la suma aritmetica.
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void add(unsigned long int *Rp, unsigned long int Rm, unsigned long int Rn);	//funcion de la suma aritmetica
+void add( uint32_t *Rp,  uint32_t Rm,  uint32_t Rn);	//funcion de la suma aritmetica
 
 
 /**
@@ -12,32 +13,32 @@ void add(unsigned long int *Rp, unsigned long int Rm, unsigned long int Rn);	//f
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void and(unsigned long int *Rp, unsigned long int Rm, unsigned long int Rn);	//funcion de la multiplicacion logica
+void and( uint32_t *Rp,  uint32_t Rm,  uint32_t Rn);	//funcion de la multiplicacion logica
 
 /**
 *\param *Rp Direccion en donde se guardara el resultado de la suma logica exclusiva.
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void eor(unsigned long int *Rp, unsigned long int Rm, unsigned long int Rn);	//funcion de la suma logica exclusiva
+void eor( uint32_t *Rp,  uint32_t Rm,  uint32_t Rn);	//funcion de la suma logica exclusiva
 
 /**
 *\param *Rp Direccion a la cual se desea mover el fichero.
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void mov(unsigned long int *Rp, unsigned long int Rm);			//funcion para mover un fichero a otra direccion
+void mov(uint32_t *Rp, uint32_t Rm);			//funcion para mover un fichero a otra direccion
 
 /**
 *\param *Rp Direccion en donde se guardara el resultado de la suma logica
 *\param Rm Registro que se movera a Rp.
 */
-void orr(unsigned long int *Rp, unsigned long int Rm, unsigned long int Rn);	//funcion de la suma logica
+void orr(uint32_t *Rp, uint32_t Rm, uint32_t Rn);	//funcion de la suma logica
 
 /**
 *\param *Rp Direccion en donde se guardara el resultado de la resta aritmetica.
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void sub(unsigned long int *Rp, unsigned long int Rm, unsigned long int Rn);	//funcion de la resta aritmetica
+void sub(uint32_t *Rp, uint32_t Rm, uint32_t Rn);	//funcion de la resta aritmetica
 
