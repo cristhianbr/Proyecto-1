@@ -6,6 +6,8 @@ void mostrar_registro(uint32_t *reg)
 	int i;
 	for(i=0;i<=12;i++)
 	{
+		reg[i]=0-i;
 		printf("R%d: %d\n", i,reg[i]);
 	}
+
 }
