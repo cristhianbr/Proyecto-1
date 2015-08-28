@@ -5,7 +5,7 @@
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void add( uint32_t *Rp,  uint32_t Rm,  uint32_t Rn);	//funcion de la suma aritmetica
+void add( uint32_t *Rp,  uint32_t Rm,  uint32_t Rn, char *Rl);	//funcion de la suma aritmetica
 
 
 /**
