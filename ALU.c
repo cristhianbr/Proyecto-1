@@ -16,7 +16,7 @@ void eor(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la suma 
 	*Rp=Rm^Rm;
 	banderas(*Rp,Rm,Rn,Rl);
 }
-void mov(uint32_t *Rp, uint32_t Rm)				//funcion para mover un fichero a otra direccion
+void mov(uint32_t *Rp, uint32_t Rm)			            	//funcion para mover un fichero a otra direccion
 {
 	*Rp=Rm;
 }
