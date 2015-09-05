@@ -12,9 +12,11 @@ int main(void)
 	mostrar_registro(reg);      //la segunda la bandera de cero, la tercera la bandera del acarreo y la ultima variable la bandera del sobreflujo
 	And(&reg[4],reg[2],reg[3],bandera);
 	printf("Res:\t%d\nBanderas:\nN:%d\nZ:%d\nC:%d\nS:%d\n",reg[1],bandera[0],bandera[1],bandera[2],bandera[3]);
-    LSLS(&reg[5],5);
-    printf("LSLS:\t%d",reg[5]);
-    ROR(&reg[1],10);
+    LSRS(&reg[10],1,bandera);
+    printf("\nLSLS:\t%d",reg[10]);
+    printf("\nBanderas:\nN:%d\nZ:%d\nC:%d\nS:%d\n",bandera[0],bandera[1],bandera[2],bandera[3]);
+    ROR(&reg[1],1,bandera);
     printf("\nROR:\t%d",reg[1]);
+    printf("\nBanderas:\nN:%d\nZ:%d\nC:%d\nS:%d\n",bandera[0],bandera[1],bandera[2],bandera[3]);
 	return 0;
 }
