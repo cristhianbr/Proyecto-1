@@ -1,5 +1,4 @@
 #include <stdint.h>
-
 #define N 0
 #define Z 1
 #define C 2
