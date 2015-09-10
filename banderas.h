@@ -1,4 +1,10 @@
 #include <stdint.h>
+
+#define N 0
+#define Z 1
+#define C 2
+#define V 3
+
 /**
 *\brief Funcion para evaluar banderas en las operaciones logicas
 *\param Rp Resultado de la operacion logico artmetica.
