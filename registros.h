@@ -1,4 +1,5 @@
   #include <stdint.h>
+  #include <curses.h>
 /**
 *\brief Funcion para mostrar Registros.
 *\param *reg Registro a mostrar.
