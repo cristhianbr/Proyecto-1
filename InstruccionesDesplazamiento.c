@@ -32,9 +32,10 @@ void ASRS(uint32_t *Rnd, uint32_t Rm, char *Rl)
 	banderas(*Rnd,0,0,Rl);
 }
 
-void BICS(uint32_t *Rnd, uint32_t Rm) // AND entre el registro y el complemento del otro
+void BICS(uint32_t *Rnd, uint32_t Rm, char *Rl) // AND entre el registro y el complemento del otro
 {
 	*Rnd&=~Rm;
+	banderas(*Rnd,0,0,Rl);
 }
 
 void NOP()
@@ -42,26 +43,28 @@ void NOP()
 
 }
 
-void MVNS(uint32_t *Rnd, uint32_t Rm)
+void MVNS(uint32_t *Rnd, uint32_t Rm, char *Rl)
 {
     *Rnd=~Rm;
+    banderas(*Rnd,0,0,Rl);
 }
 
-void CMN(uint32_t Rm, uint32_t Rn)
+void CMN(uint32_t Rm, uint32_t Rn, char *Rl)
 {
-    uint32_t Raux;
-    Raux=Rm+Rn;
+    Rm+=Rn;
+    banderas(Rm,0,0,Rl);
 }
 
-void CMP(uint32_t Rm, uint32_t Rn)
+void CMP(uint32_t Rm, uint32_t Rn, char *Rl)
 {
-    uint32_t Raux;
-    Raux=Rm-Rn;
+    Rm-=Rn;
+    banderas(Rm,0,0,Rl);
 }
 
-void RSBS(uint32_t *Rnd, uint32_t Rm)
+void RSBS(uint32_t *Rnd, uint32_t Rm, char *Rl)
 {
     *Rnd=0-Rm;
+    banderas(*Rnd,0,0,Rl);
 }
 
 

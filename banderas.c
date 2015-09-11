@@ -1,5 +1,9 @@
 #include "banderas.h"
 #include <math.h>
+#define N 0
+#define Z 1
+#define C 2
+#define V 3
 
 void banderas(uint32_t Rp, uint32_t Rm, uint32_t Rn, char *Flags)
 {
@@ -9,7 +13,7 @@ void banderas(uint32_t Rp, uint32_t Rm, uint32_t Rn, char *Flags)
     }
     else
     {
-        Flags[N]=1;
+        Flags[N]=0;
     }
     if (Rp==0)          //sentencia para la bandera que indica el numero cero
     {
