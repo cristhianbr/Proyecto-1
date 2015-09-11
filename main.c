@@ -17,13 +17,14 @@ int main(void)
 	keypad(stdscr, TRUE);   	/* Obtener F1, F2, etc */
     noecho();	            	/* No imprimir los caracteres leidos */
     start_color();	            /* Permite manejar colores */
-    init_pair(1, COLOR_WHITE, COLOR_CYAN); 	/* Pair 1 -> Texto verde fondo Negro */
-    bkgd(COLOR_PAIR(1));
+    init_pair(1, COLOR_WHITE, COLOR_CYAN); 	/* Pair 1 -> Texto blanco fondo cyan */
+    bkgd(COLOR_PAIR(1));           //se rellena el todo el fondo de color cyan
 	mostrar_registro(reg);
-	move(4, 50); printw("N=%d\n",bandera[0]);
-    move(5, 50); printw("Z=%d\n",bandera[1]);
-    move(6, 50); printw("C=%d\n",bandera[2]);
-    move(7, 50); printw("S=%d\n",bandera[3]);
+	move(4, 50); printw("Banderas");
+	move(6, 50); printw("N=%d\n",bandera[0]);
+    move(7, 50); printw("Z=%d\n",bandera[1]);
+    move(8, 50); printw("C=%d\n",bandera[2]);
+    move(9, 50); printw("S=%d\n",bandera[3]);
     move(20, 50); printw("Emulador ARM Cortex-M0");
     border( ACS_VLINE, ACS_VLINE,
             ACS_HLINE, ACS_HLINE,
@@ -35,22 +36,29 @@ int main(void)
     {
         getch();            /* Espera entrada del usuario */
         clear();
-        if (i==1)   {   ROR(&reg[1],1,bandera); move(2,28); printw("Operacion:\tROR\tR1->1"); refresh();  }
-        if (i==2)   {   add(&reg[12],reg[2],3,bandera); move(2,28); printw("Operacion:\tADD\tR12=R2+3"); refresh(); }
-        if (i==3)   {   And(&reg[4],reg[5],reg[6],bandera); move(2,28); printw("Operacion:\tAND\tR4=R5&R6"); refresh(); }
-        if (i==4)   {   eor(&reg[7],reg[2],reg[9],bandera); move(2,28); printw("Operacion:\tEOR\tR7=R2^R9"); refresh(); }
-        if (i==5)   {   orr(&reg[10],reg[4],5,bandera); move(2,28); printw("Operacion:\tORR\tR10=R4|4"); refresh(); }
-        if (i==6)   {   LSLS(&reg[12],3,bandera); move(2,28); printw("Operacion:\tLSLS\tR12->3"); refresh(); }
-        if (i==7)   {   LSRS(&reg[10],6,bandera); move(2,28); printw("Operacion:\tLSRS\tR10->6"); refresh(); }
-        if (i==8)   {   ASRS(&reg[6],2,bandera); move(2,28); printw("Operacion:\tASRS\tR6->2 "); refresh(); }
-        if (i==9)   {   break;  }
+        if (i==1)    {   ROR(&reg[1],1,bandera);                move(2,28); printw("Operacion:\tROR\tR1->1");        refresh();  }
+        if (i==2)    {   add(&reg[12],reg[2],3,bandera);        move(2,28); printw("Operacion:\tADD\tR12=R2+3");     refresh(); }
+        if (i==3)    {   And(&reg[4],reg[5],reg[6],bandera);    move(2,28); printw("Operacion:\tAND\tR4=R5&R6");     refresh(); }
+        if (i==4)    {   eor(&reg[7],reg[2],reg[9],bandera);    move(2,28); printw("Operacion:\tEOR\tR7=R2^R9");     refresh(); }
+        if (i==5)    {   orr(&reg[10],reg[4],5,bandera);        move(2,28); printw("Operacion:\tORR\tR10=R4|4");     refresh(); }
+        if (i==6)    {   LSLS(&reg[12],3,bandera);              move(2,28); printw("Operacion:\tLSLS\tR12->3");      refresh(); }
+        if (i==7)    {   LSRS(&reg[10],6,bandera);              move(2,28); printw("Operacion:\tLSRS\tR10->6");      refresh(); }
+        if (i==8)    {   ASRS(&reg[6],2,bandera);               move(2,28); printw("Operacion:\tASRS\tR6->2");       refresh(); }
+        if (i==9)    {   BICS(&reg[3],reg[6],bandera);          move(2,28); printw("Operacion:\tBICS\tR3=R3&~R6");   refresh(); }
+        if (i==10)   {   NOP();                                 move(2,28); printw("Operacion:\tNOP");               refresh(); }
+        if (i==11)   {   MVNS(&reg[5],reg[7],bandera);          move(2,28); printw("Operacion:\tMVNS\tR5=~R7");      refresh(); }
+        if (i==12)   {   CMN(&reg[11],reg[5],bandera);          move(2,28); printw("Operacion:\tCMN\tR11+R5");       refresh(); }
+        if (i==13)   {   CMP(&reg[2],2,bandera);                move(2,28); printw("Operacion:\tCMP\tR2+2");         refresh(); }
+        if (i==14)   {   RSBS(&reg[3],reg[5],bandera);          move(2,28); printw("Operacion:\tRSBS\tR3=~2R5");     refresh(); }
+        if (i==15)   {   break;  }
         if (i!=0)
         {
             mostrar_registro(reg);
-            move(4, 50); printw("N=%d\n",bandera[0]);
-            move(5, 50); printw("Z=%d\n",bandera[1]);
-            move(6, 50); printw("C=%d\n",bandera[2]);
-            move(7, 50); printw("S=%d\n",bandera[3]);
+            move(4, 50); printw("Banderas");
+            move(6, 50); printw("N=%d\n",bandera[0]);
+            move(7, 50); printw("Z=%d\n",bandera[1]);
+            move(8, 50); printw("C=%d\n",bandera[2]);
+            move(9, 50); printw("S=%d\n",bandera[3]);
             move(20, 50); printw("Emulador ARM Cortex-M0");
             border( ACS_VLINE, ACS_VLINE,
                     ACS_HLINE, ACS_HLINE,
