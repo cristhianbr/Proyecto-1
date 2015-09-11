@@ -9,7 +9,7 @@ void banderas(uint32_t Rp, uint32_t Rm, uint32_t Rn, char *Flags)
     }
     else
     {
-        Flags[N]=0;
+        Flags[N]=1;
     }
     if (Rp==0)          //sentencia para la bandera que indica el numero cero
     {

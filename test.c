@@ -5,7 +5,7 @@
 #include "banderas.h"
 #include <stdint.h>
 
-int main(void)
+int test(void)
 {
 	uint32_t reg[13];           //se creo un arreglo de 13 variables de 32 bits para los 13 registros
 	char bandera[4];            //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
