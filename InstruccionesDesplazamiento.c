@@ -31,3 +31,37 @@ void ASRS(uint32_t *Rnd, uint32_t Rm, char *Rl)
 	*Rnd=(uint32_t)(b);
 	banderas(*Rnd,0,0,Rl);
 }
+
+void BICS(uint32_t *Rnd, uint32_t Rm) // AND entre el registro y el complemento del otro
+{
+	*Rnd&=~Rm;
+}
+
+void NOP()
+{
+
+}
+
+void MVNS(uint32_t *Rnd, uint32_t Rm)
+{
+    *Rnd=~Rm;
+}
+
+void CMN(uint32_t Rm, uint32_t Rn)
+{
+    uint32_t Raux;
+    Raux=Rm+Rn;
+}
+
+void CMP(uint32_t Rm, uint32_t Rn)
+{
+    uint32_t Raux;
+    Raux=Rm-Rn;
+}
+
+void RSBS(uint32_t *Rnd, uint32_t Rm)
+{
+    *Rnd=0-Rm;
+}
+
+
