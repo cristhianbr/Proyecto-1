@@ -4,7 +4,7 @@
 #include "ALU.h"
 #include "banderas.h"
 #include <stdint.h>
-#include <curses.h>
+#include "curses.h"
 
 int main(void)
 {

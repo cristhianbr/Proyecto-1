@@ -67,4 +67,6 @@ void RSBS(uint32_t *Rnd, uint32_t Rm, char *Rl)
     banderas(*Rnd,0,0,Rl);
 }
 
+void REV(uint32_t *Rnd, uint32_t Rm);
+
 
