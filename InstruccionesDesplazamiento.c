@@ -26,7 +26,7 @@ void ASRS(uint32_t *Rnd, uint32_t Rm, char *Rl)
 {
 	int32_t b;
 	b=(int32_t)(*Rnd);
-	b=b/(pow(2,Rm));
+	b=b>>Rm;
 	*Rnd=(uint32_t)(b);
 	banderas(*Rnd,0,0,Rl);
 }

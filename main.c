@@ -36,7 +36,7 @@ int main(void)
     {
         getch();            /* Espera entrada del usuario */
         clear();
-        if (i==1)    {   ROR(&reg[1],1,bandera);                move(2,28); printw("Operacion:\tROR\tR1->1");        refresh();  }
+        if (i==1)    {   ROR(&reg[1],1,bandera);                move(2,28); printw("Operacion:\tROR\tR1->1");        refresh(); }
         if (i==2)    {   add(&reg[12],reg[2],3,bandera);        move(2,28); printw("Operacion:\tADD\tR12=R2+3");     refresh(); }
         if (i==3)    {   And(&reg[4],reg[5],reg[6],bandera);    move(2,28); printw("Operacion:\tAND\tR4=R5&R6");     refresh(); }
         if (i==4)    {   eor(&reg[7],reg[2],reg[9],bandera);    move(2,28); printw("Operacion:\tEOR\tR7=R2^R9");     refresh(); }
@@ -64,7 +64,7 @@ int main(void)
                     ACS_HLINE, ACS_HLINE,
                     ACS_ULCORNER, ACS_URCORNER,
                     ACS_LLCORNER, ACS_LRCORNER	);
-            refresh();	                /* Imprime en la pantalla Sin esto el printw no es mostrado */
+            refresh();	            /* Imprime en la pantalla Sin esto el printw no es mostrado */
         }
         i+=1;                       //Se crea un variable que va  a servir de contador
     }
