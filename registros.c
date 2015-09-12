@@ -1,6 +1,6 @@
 #include "registros.h"
 #include <stdint.h>
-#include <curses.h>
+#include "curses.h"
 
 void mostrar_registro(uint32_t *reg)
 {
