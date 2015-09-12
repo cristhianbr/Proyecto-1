@@ -1,6 +1,7 @@
 #include "InstruccionesDesplazamiento.h"
 #include "banderas.h"
 
+
 void LSLS(uint32_t *Rnd, uint32_t Rm, char *Rl)   //Desplazamiento logico a la izquierda.
 {
 	*Rnd=*Rnd<<Rm;
@@ -26,7 +27,7 @@ void ASRS(uint32_t *Rnd, uint32_t Rm, char *Rl)
 {
 	int32_t b;
 	b=(int32_t)(*Rnd);
-	b=b/(pow(2,Rm));
+	b=b>>Rm;
 	*Rnd=(uint32_t)(b);
 	banderas(*Rnd,0,0,Rl);
 }
@@ -66,6 +67,41 @@ void RSBS(uint32_t *Rnd, uint32_t Rm, char *Rl)
     banderas(*Rnd,0,0,Rl);
 }
 
-void REV(uint32_t *Rnd, uint32_t Rm);
+void REVS(uint32_t *Rnd, uint32_t Rm,char *Rl)
+{
+    *Rnd=((Rm>>24)|(Rm<<24)|((Rm>>8)&(0x0000ff00))|((Rm<<8)&(0x00ff0000)));
+    banderas(Rnd,0,0,Rl);
+}
+
+void REV16S(uint32_t *Rnd, uint32_t Rm,char *Rl)
+{
+    *Rnd=(((Rm>>8)&(0x00ff0000))|((Rm<<8)&(0xff000000))|((Rm>>8)&(0x000000ff))|((Rm<<8)&(0x0000ff00)));
+    banderas(Rnd,0,0,Rl);
+}
+
+void REVSHS(uint32_t *Rnd, uint32_t Rm,char *Rl)
+{
+    *Rnd=((Rm>>8)&(0x000000ff));
+    if((1>>7)&Rm)
+    {
+        *Rnd=(1&0xfffffff00);
+    }
+    else
+    {
+        *Rnd=(0&0xfffffff00);
+    }
+
+     banderas(Rnd,0,0,Rl);
+}
+
+void TST(uint32_t Rnd, uint32_t Rm1,char *Rl)
+{
+Rnd&=Rm1;
+
+	banderas(Rnd,0,0,Rl);
+}
+
+
+
 
 

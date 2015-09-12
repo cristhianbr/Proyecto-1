@@ -11,7 +11,7 @@ int main(void)
     uint32_t reg[13]={0};       //se creo un arreglo de 13 variables de 32 bits para los 13 registros
 	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
     int i;
-    initscr();		            /* Inicia modo curses */
+    initscr();	            /* Inicia modo curses */
     curs_set(0);	            /* Cursor Invisible */
     raw();			            /* Activa modo raw */
 	keypad(stdscr, TRUE);   	/* Obtener F1, F2, etc */

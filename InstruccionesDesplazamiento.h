@@ -74,4 +74,10 @@ void RSBS(uint32_t *Rnd, uint32_t Rm, char *Rl);
 *\param *Rdn Puntero con la direccion de el registro que se va a mover, y en donde se guardara el resultado obtenido.
 *\param Rm Numero de posiciones a mover.
 */
-void REV(uint32_t *Rnd, uint32_t Rm);
+void REVS(uint32_t *Rnd, uint32_t Rm,char *Rl);
+
+void REV16S(uint32_t *Rnd, uint32_t Rm,char *Rl);
+
+void REVSHS(uint32_t *Rnd, uint32_t Rm, char *Rl);
+
+void TST(uint32_t Rm, uint32_t Rm1,char *Rl);
