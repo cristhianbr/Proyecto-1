@@ -1,12 +1,12 @@
 #include "ALU.h"
 #include "banderas.h"
 
-void add(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la suma aritmetica
+void ADDS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la suma aritmetica
 {
 	*Rp=Rm+Rn;
     banderas(*Rp,Rm,Rn,Rl);
 }
-void And(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la multiplicacion logica
+void ANDS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la multiplicacion logica
 {
 	*Rp=Rm&Rn;
 	banderas(*Rp,Rm,Rn,Rl);

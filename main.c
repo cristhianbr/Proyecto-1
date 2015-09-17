@@ -10,7 +10,14 @@ int main(void)
 {
     uint32_t reg[13]={0};       //se creo un arreglo de 13 variables de 32 bits para los 13 registros
 	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
-    int i;
+    int i, num_instructions;
+    ins_t read;
+    char** instructions;
+    instruction_t instruction;
+    num_instructions = readFile("code.txt", &read);
+    if(num_instructions==-1)    {   return 0;   }
+    if(read.array==NULL)        {   return 0;	}
+    instructions = read.array;
     initscr();	            /* Inicia modo curses */
     curs_set(0);	            /* Cursor Invisible */
     raw();			            /* Activa modo raw */
@@ -31,26 +38,10 @@ int main(void)
             ACS_ULCORNER, ACS_URCORNER,
             ACS_LLCORNER, ACS_LRCORNER	);
     refresh();
-	i=0;
 	while(1)
     {
         getch();            /* Espera entrada del usuario */
         clear();
-        if (i==1)    {   ROR(&reg[1],1,bandera);                move(2,28); printw("Operacion:\tROR\tR1->1");        refresh(); }
-        if (i==2)    {   add(&reg[12],reg[2],3,bandera);        move(2,28); printw("Operacion:\tADD\tR12=R2+3");     refresh(); }
-        if (i==3)    {   And(&reg[4],reg[5],reg[6],bandera);    move(2,28); printw("Operacion:\tAND\tR4=R5&R6");     refresh(); }
-        if (i==4)    {   eor(&reg[7],reg[2],reg[9],bandera);    move(2,28); printw("Operacion:\tEOR\tR7=R2^R9");     refresh(); }
-        if (i==5)    {   orr(&reg[10],reg[4],5,bandera);        move(2,28); printw("Operacion:\tORR\tR10=R4|4");     refresh(); }
-        if (i==6)    {   LSLS(&reg[12],3,bandera);              move(2,28); printw("Operacion:\tLSLS\tR12->3");      refresh(); }
-        if (i==7)    {   LSRS(&reg[10],6,bandera);              move(2,28); printw("Operacion:\tLSRS\tR10->6");      refresh(); }
-        if (i==8)    {   ASRS(&reg[6],2,bandera);               move(2,28); printw("Operacion:\tASRS\tR6->2");       refresh(); }
-        if (i==9)    {   BICS(&reg[3],reg[6],bandera);          move(2,28); printw("Operacion:\tBICS\tR3=R3&~R6");   refresh(); }
-        if (i==10)   {   NOP();                                 move(2,28); printw("Operacion:\tNOP");               refresh(); }
-        if (i==11)   {   MVNS(&reg[5],reg[7],bandera);          move(2,28); printw("Operacion:\tMVNS\tR5=~R7");      refresh(); }
-        if (i==12)   {   CMN(&reg[11],reg[5],bandera);          move(2,28); printw("Operacion:\tCMN\tR11+R5");       refresh(); }
-        if (i==13)   {   CMP(&reg[2],2,bandera);                move(2,28); printw("Operacion:\tCMP\tR2+2");         refresh(); }
-        if (i==14)   {   RSBS(&reg[3],reg[5],bandera);          move(2,28); printw("Operacion:\tRSBS\tR3=~2R5");     refresh(); }
-        if (i==15)   {   break;  }
         if (i!=0)
         {
             mostrar_registro(reg);
@@ -66,9 +57,10 @@ int main(void)
                     ACS_LLCORNER, ACS_LRCORNER	);
             refresh();	            /* Imprime en la pantalla Sin esto el printw no es mostrado */
         }
-        i+=1;                       //Se crea un variable que va  a servir de contador
     }
     attroff(COLOR_PAIR(1));     	/* DEshabilita los colores Pair 1 */
     endwin();	                    /* Finaliza el modo curses */
+    for(i=0; i<num_instructions; i++)   {   free(read.array[i]);	}
+	free(read.array);
     return 0;
 }
