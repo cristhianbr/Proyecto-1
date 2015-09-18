@@ -5,7 +5,7 @@
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void add(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl);	//funcion de la suma aritmetica
+void ADD(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag);	//funcion de la suma aritmetica, modifica banderas
 
 
 /**
@@ -13,32 +13,32 @@ void add(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl);	//funcion de la suma
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void And(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl);	//funcion de la multiplicacion logica
+void AND(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag);	//funcion de la multiplicacion logica, modifica banderas
 
 /**
 *\param *Rp Direccion en donde se guardara el resultado de la suma logica exclusiva.
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void eor( uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl);	//funcion de la suma logica exclusiva
+void EOR( uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag);	//funcion de la suma logica exclusiva
 
 /**
 *\param *Rp Direccion a la cual se desea mover el fichero.
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void mov(uint32_t *Rp, uint32_t Rm);			//funcion para mover un fichero a otra direccion
+void MOV(uint32_t *Rp, uint32_t Rm, char *flag);			//funcion para mover un fichero a otra direccion
 
 /**
 *\param *Rp Direccion en donde se guardara el resultado de la suma logica
 *\param Rm Registro que se movera a Rp.
 */
-void orr(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl);	//funcion de la suma logica
+void ORR(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag);	//funcion de la suma logica
 
 /**
 *\param *Rp Direccion en donde se guardara el resultado de la resta aritmetica.
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
-void sub(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl);	//funcion de la resta aritmetica
+void SUB(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag);	//funcion de la resta aritmetica
 

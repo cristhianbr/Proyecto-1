@@ -5,6 +5,7 @@
 #include "banderas.h"
 #include <stdint.h>
 #include "curses.h"
+#include "decoder.h"
 
 int main(void)
 {
@@ -18,6 +19,8 @@ int main(void)
     if(num_instructions==-1)    {   return 0;   }
     if(read.array==NULL)        {   return 0;	}
     instructions = read.array;
+    for(i=0; i<num_instructions; i++)   {   free(read.array[i]);	}
+	free(read.array);
     initscr();	            /* Inicia modo curses */
     curs_set(0);	            /* Cursor Invisible */
     raw();			            /* Activa modo raw */
@@ -38,10 +41,12 @@ int main(void)
             ACS_ULCORNER, ACS_URCORNER,
             ACS_LLCORNER, ACS_LRCORNER	);
     refresh();
+    getch();
 	while(1)
     {
         getch();            /* Espera entrada del usuario */
         clear();
+
         if (i!=0)
         {
             mostrar_registro(reg);
@@ -60,7 +65,5 @@ int main(void)
     }
     attroff(COLOR_PAIR(1));     	/* DEshabilita los colores Pair 1 */
     endwin();	                    /* Finaliza el modo curses */
-    for(i=0; i<num_instructions; i++)   {   free(read.array[i]);	}
-	free(read.array);
     return 0;
 }

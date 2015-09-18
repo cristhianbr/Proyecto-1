@@ -1,32 +1,33 @@
 #include "ALU.h"
 #include "banderas.h"
 
-void ADDS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la suma aritmetica
+void ADD(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la suma aritmetica
 {
 	*Rp=Rm+Rn;
-    banderas(*Rp,Rm,Rn,Rl);
+    banderas(*Rp,Rm,Rn,flag);
 }
-void ANDS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la multiplicacion logica
+void AND(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la multiplicacion logica
 {
 	*Rp=Rm&Rn;
-	banderas(*Rp,Rm,Rn,Rl);
+	banderas(*Rp,Rm,Rn,flag);
 }
-void eor(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la suma logica exclusiva
+void EOR(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la suma logica exclusiva
 {
 	*Rp=Rm^Rm;
-	banderas(*Rp,Rm,Rn,Rl);
+	banderas(*Rp,Rm,Rn,flag);
 }
-void mov(uint32_t *Rp, uint32_t Rm)			            	//funcion para mover un fichero a otra direccion
+void MOV(uint32_t *Rp, uint32_t Rm, char *flag)			            	//funcion para mover un fichero a otra direccion
 {
 	*Rp=Rm;
+	banderas(*Rp,0,0,flag);
 }
-void orr(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la suma logica
+void ORR(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la suma logica
 {
 	*Rp=Rm|Rn;
-	banderas(*Rp,Rm,Rn,Rl);
+	banderas(*Rp,Rm,Rn,flag);
 }
-void sub(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *Rl)	//funcion de la resta aritmetica
+void SUB(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la resta aritmetica
 {
 	*Rp=Rm-Rn;
-	banderas(*Rp,Rm,Rn,Rl);
+	banderas(*Rp,Rm,Rn,flag);
 }
