@@ -1,6 +1,6 @@
 #include "decoder.h"
 
-void decodeInstruction(instruction_t instruction, uint32_t *registros, char *flag)
+void decodeInstruction(instruction_t instruction, uint32_t *registros, char *flag, uint32_t *PC)
 {
     // instruction.op1_value --> Valor primer operando
     // instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
@@ -10,6 +10,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         if((instruction.op3_type=='N')||(instruction.op2_type=='R'))
         {
             ADD(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
+            *PC++;
         }
         if((instruction.op3_type=='N')||(instruction.op2_type=='#'))
         {
@@ -267,12 +268,12 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
 instruction_t getInstruction(char* instStr)
 {
 	instruction_t instruction;
-	char* split = (char*)malloc(strlen(instStr));
+	char* split = (char*)malloc(strlen(instStr)+1);
 	int num=0;
 
 	strcpy(split, instStr);
 	/* Obtiene el mnemonico de la instrucción */
-	split = strtok(split," ,");
+	split = strtok(split, " ,");
 	strcpy(instruction.mnemonic, split);
 
 	/* Separa los operandos */
@@ -281,17 +282,17 @@ instruction_t getInstruction(char* instStr)
 		switch(num){
 			case 1:
 				instruction.op1_type  = split[0];
-				instruction.op1_value = (uint32_t)strtol(split+1, NULL, 0);
+				instruction.op1_value = (uint32_t)strtoll(split+1, NULL, 0);
 				break;
 
 			case 2:
 				instruction.op2_type  = split[0];
-				instruction.op2_value = (uint32_t)strtol(split+1, NULL, 0);
+				instruction.op2_value = (uint32_t)strtoll(split+1, NULL, 0);
 				break;
 
 			case 3:
 				instruction.op3_type  = split[0];
-				instruction.op3_value = (uint32_t)strtol(split+1, NULL, 0);
+				instruction.op3_value = (uint32_t)strtoll(split+1, NULL, 0);
 				break;
 		}
 
@@ -299,8 +300,7 @@ instruction_t getInstruction(char* instStr)
 		num++;
 	}
 
-	if(num==3)
-    {
+	if(num==3){
 		instruction.op3_type  = 'N';
 		instruction.op3_value = 0;
 	}
@@ -309,6 +309,7 @@ instruction_t getInstruction(char* instStr)
 
 	return instruction;
 }
+
 int readFile(char* filename, ins_t* instructions)
 {
 	FILE* fp;	/* Puntero a un archivo  */
@@ -320,12 +321,12 @@ int readFile(char* filename, ins_t* instructions)
 	if( fp==NULL )
 		return -1;	/* Error al abrir el archivo */
 
-	lines = countLines(fp)-1;	/* Cantidad de líneas*/
+	lines = countLines(fp);	/* Cantidad de líneas*/
 
 	/* Asignación dinámica de memoria para cada instrucción */
 	instructions->array = (char**)malloc(lines*sizeof(char*));
 	while ( fgets(buffer, 50, fp) != NULL && line<lines ){
-        instructions->array[line] = (char*)malloc(strlen(buffer)*sizeof(char));
+        instructions->array[line] = (char*)malloc((strlen(buffer)+1)*sizeof(char));
 		strcpy(instructions->array[line], buffer);
 		line++;
  	}
@@ -334,18 +335,18 @@ int readFile(char* filename, ins_t* instructions)
 
 	return lines;
 }
+
+
 int countLines(FILE* fp)
 {
 	int lines=0;
-	int ch;
+	char buffer[50];
 
-	while(!feof(fp))
-	{
-	  ch = fgetc(fp);
-	  if(ch == '\n')
+	while( fgets(buffer, 50, fp) != NULL )
 		lines++;
-	}
+
 	rewind(fp);
+
 	return lines;
 }
 
