@@ -13,7 +13,7 @@ int main(void)
 	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
     int ch=0,j=0;
 
-    int i, num_instructions;
+    int num_instructions;
     ins_t read;
     char** instructions;
     instruction_t instruction;

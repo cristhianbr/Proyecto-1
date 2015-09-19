@@ -37,7 +37,7 @@ void MVNS(uint32_t *Rnd, uint32_t Rm, char *flag) //Funcion  que realiza el comp
     *Rnd=~Rm;
     banderas2(*Rnd,flag);
 }
-void CMN(uint32_t Rm, uint32_t Rn, char *flag // Funcion que realiza una suma pero no guarda el resultado, solo modifica banderas
+void CMN(uint32_t Rm, uint32_t Rn, char *flag )// Funcion que realiza una suma pero no guarda el resultado, solo modifica banderas
 {
     Rm+=Rn;
     banderas2(Rm,flag);
@@ -61,6 +61,7 @@ void REV16(uint32_t *Rnd, uint32_t Rm) //Funcion que opera a nivel de bytes
     *Rnd=(((Rm>>8)&(0x00ff0000))|((Rm<<8)&(0xff000000))|((Rm>>8)&(0x000000ff))|((Rm<<8)&(0x0000ff00)));
 }
 void REVSH(uint32_t *Rnd, uint32_t Rm) //Funcion que guarda el primer byte con extencion de signo hasta completar los 32 bits.
+{
     *Rnd=((Rm>>8)&(0x000000ff));
     if((1>>7)&Rm)
     {
