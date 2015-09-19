@@ -79,7 +79,7 @@ void CMP(uint32_t Rm, uint32_t Rn, char *flag);
 void RSBS(uint32_t *Rnd, uint32_t Rm, char *flag);
 
 /**
-*\brief Funcion que opera a nivel de bytes.
+*\brief Funcion que opera a nivel de bytes, revierte el orden de bytes en un registro de 32 bits.
 *\param *Rdn Puntero con la direccion de el registro que se va a mover, y en donde se guardara el resultado obtenido.
 *\param Rm Numero de posiciones a mover.
 *\param flag Puntero con la direccion de el arreglo de banderas.
@@ -87,14 +87,14 @@ void RSBS(uint32_t *Rnd, uint32_t Rm, char *flag);
 void REV(uint32_t *Rnd, uint32_t Rm);
 
 /**
-*\brief Funcion que opera a nivel de bytes.
+*\brief Funcion que opera a nivel de bytes, revierte el orden en cada media palabra de 16 bits en un registro de 32 bits.
 *\param *Rdn Puntero con la direccion de el registro que se va a mover, y en donde se guardara el resultado obtenido.
 *\param Rm Numero de posiciones a mover.
 */
 void REV16(uint32_t *Rnd, uint32_t Rm);
 
 /**
-*\brief Funcion que opera a nivel de bytes.
+*\brief Funcion que opera a nivel de bytes, guarda el primer byte con extencion de signo hasta completar los 32 bits.
 *\param *Rdn Puntero con la direccion de el registro que se va a mover, y en donde se guardara el resultado obtenido.
 *\param Rm Numero de posiciones a mover.
 */
