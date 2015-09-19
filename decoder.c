@@ -135,27 +135,47 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     }
     if(strcmp(instruction.mnemonic,"LSLS")==0)
     {
-        if(instruction.op2_type=='R')
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
-            LSLS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
+            LSLS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
         }
-        if(instruction.op2_type=='#')
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
-            LSLS(&registros[instruction.op1_value],instruction.op2_value,flag);
+            LSLS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
+            registros[15]+=1;
+        }
+        if(instruction.op3_type=='R')
+        {
+            LSLS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
+            registros[15]+=1;
+        }
+        if(instruction.op3_type=='#')
+        {
+            LSLS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
         }
     }
     if(strcmp(instruction.mnemonic,"LSRS")==0)
     {
-        if(instruction.op2_type=='R')
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
-            LSRS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
+            LSRS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
         }
-        if(instruction.op2_type=='#')
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
-            LSRS(&registros[instruction.op1_value],instruction.op2_value,flag);
+            LSRS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
+            registros[15]+=1;
+        }
+        if(instruction.op3_type=='R')
+        {
+            LSRS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
+            registros[15]+=1;
+        }
+        if(instruction.op3_type=='#')
+        {
+            LSRS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
         }
     }

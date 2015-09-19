@@ -13,7 +13,7 @@ int main(void)
 	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
     int ch=0,j=0;
 
-    int i, num_instructions;
+    int num_instructions;
     ins_t read;
     char** instructions;
     instruction_t instruction;
@@ -28,7 +28,7 @@ int main(void)
 	keypad(stdscr, TRUE);   	/* Obtener F1, F2, etc */
     noecho();	            	/* No imprimir los caracteres leidos */
     start_color();	            /* Permite manejar colores */
-    init_pair(1, COLOR_WHITE, COLOR_CYAN); 	/* Pair 1 -> Texto blanco fondo cyan */
+    init_pair(1, COLOR_WHITE, COLOR_GREEN); 	/* Pair 1 -> Texto blanco fondo cyan */
     bkgd(COLOR_PAIR(1));           //se rellena el todo el fondo de color cyan
 
 	mostrar_registro(reg);
@@ -50,7 +50,7 @@ int main(void)
         if (j!=0)
         {
             mostrar_registro(reg);
-            move(2, 15); printw("%s",instructions[reg[15]]);
+            move(2, 15); printw("%s",instructions[reg[15]-1]);
             move(4, 50); printw("Banderas");
             move(6, 50); printw("N=%d\n",bandera[0]);
             move(7, 50); printw("Z=%d\n",bandera[1]);

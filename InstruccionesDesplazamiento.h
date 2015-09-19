@@ -6,7 +6,7 @@
 *\param Rm Numero de posiciones a mover.
 *\param flag Puntero con la direccion de el arreglo de banderas.
 */
-void LSLS(uint32_t *Rnd, uint32_t Rm, char *flag);
+void LSLS(uint32_t *Rnd, uint32_t Rm, uint32_t Rn, char *flag);
 
 /**
 *\brief Funcion desplazamiento logico hacia la derecha.
@@ -14,7 +14,7 @@ void LSLS(uint32_t *Rnd, uint32_t Rm, char *flag);
 *\param Rm Numero de posiciones a mover.
 *\param flag Puntero con la direccion de el arreglo de banderas.
 */
-void LSRS(uint32_t *Rnd, uint32_t Rm, char *flag);
+void LSRS(uint32_t *Rnd, uint32_t Rm, uint32_t Rn, char *flag);
 
 /**
 *\brief Funcion para rotacion logica hacia la derecha.
