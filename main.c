@@ -17,18 +17,18 @@ int main(void)
     ins_t read;
     char** instructions;
     instruction_t instruction;
-    num_instructions = readFile("prueba.txt", &read);
+    num_instructions = readFile("code.txt", &read);
     if(num_instructions==-1)    {   return 0;   }
     if(read.array==NULL)        {   return 0;	}
     instructions = read.array;
 
-    initscr();	            /* Inicia modo curses */
+    initscr();	                /* Inicia modo curses */
     curs_set(0);	            /* Cursor Invisible */
     raw();			            /* Activa modo raw */
 	keypad(stdscr, TRUE);   	/* Obtener F1, F2, etc */
     noecho();	            	/* No imprimir los caracteres leidos */
     start_color();	            /* Permite manejar colores */
-    init_pair(1, COLOR_WHITE, COLOR_GREEN); 	/* Pair 1 -> Texto blanco fondo cyan */
+    init_pair(1, COLOR_WHITE, COLOR_CYAN); 	/* Pair 1 -> Texto blanco fondo cyan */
     bkgd(COLOR_PAIR(1));           //se rellena el todo el fondo de color cyan
 
 	mostrar_registro(reg);

@@ -162,7 +162,7 @@ void BL(uint32_t *reg, uint32_t *reg2, int salto)//Esta funcion envia al PC a un
 
 void BX(uint32_t *reg, uint32_t Rm)
 {
-    *reg=Rm;//Esta funcion guardo el contenido de un registro en el PC
+    *reg=Rm;                                        //Esta funcion guardo el contenido de un registro en el PC
 }
 
 void BLX(uint32_t *reg, uint32_t *reg2, uint32_t Rm)//Esta funcion guardo el contenido de un registro en el PC y pone a RL en la siguiente instruccion teniendo en cuenta la consideracion de que PC emplea 32 bits

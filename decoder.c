@@ -426,11 +426,25 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     }
     if(strcmp(instruction.mnemonic,"BX")==0)
     {
-        BX(&registros[15],registros[instruction.op1_value]);
+        if(instruction.op1_type=='L')
+        {
+            BX(&registros[15],registros[14]);
+        }
+        else
+        {
+            BX(&registros[15],registros[instruction.op1_value]);
+        }
     }
     if(strcmp(instruction.mnemonic,"BLX")==0)
     {
-        BLX(&registros[15],&registros[14],registros[instruction.op1_value]);
+        if(instruction.op1_type=='L')
+        {
+            BLX(&registros[15],&registros[14],registros[14]);
+        }
+        else
+        {
+            BLX(&registros[15],&registros[14],registros[instruction.op1_value]);
+        }
     }
 }
 
