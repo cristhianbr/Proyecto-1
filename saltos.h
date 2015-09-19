@@ -30,8 +30,8 @@ void BLE(uint32_t *reg, int salto, char *flags);
 
 void BLA(uint32_t *reg, int salto);
 
-void BL(uint32_t *reg, int salto);
+void BL(uint32_t *reg, uint32_t *reg2, int salto);
 
 void BX(uint32_t *reg, uint32_t Rm);
 
-void BLX(uint32_t *reg, uint32_t Rm);
+void BLX(uint32_t *reg, uint32_t *reg2, uint32_t Rm);

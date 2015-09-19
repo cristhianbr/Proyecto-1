@@ -31,3 +31,9 @@ void SUB(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la res
 	*Rp=Rm-Rn;
 	banderas(*Rp,Rm,Rn,flag);
 }
+
+void MUL(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la multiplicacion de dos registros
+{
+	*Rp=Rm*Rn;
+	banderas(*Rp,Rm,Rn,flag);
+}

@@ -1,20 +1,21 @@
 #include "banderas.h"
+#define N 0
+#define Z 1
+#define C 2
+#define V 3
 
 
 void B(uint32_t *reg, int salto)// Esta funcion envia al PC a una direccion inmediata
 {
     reg[15]+=salto;
-
 }
 
 void BEQ(uint32_t *reg, int salto, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de cero esta activa de lo contrario solo va a la siguiente instruccion
 {
     if(flags[Z]=='1')
         reg[15]+=salto;
-
     else
         reg[15]+=1;
-
 }
 
 void BNE(uint32_t *reg, int salto, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de cero esta inactiva de lo contrario solo va a la siguiente instruccion
@@ -153,11 +154,10 @@ void BLA(uint32_t *reg, int salto)// Esta funcion envia al PC a una direccion in
 
 }
 
-void BL(uint32_t *reg, int salto)//Esta funcion envia al PC a una direccion inmediata y manda al RL a la siguiente instruccion teniendo en cuenta la consideracion de que PC emplea 32 bits
+void BL(uint32_t *reg, uint32_t *reg2, int salto)//Esta funcion envia al PC a una direccion inmediata y manda al RL a la siguiente instruccion teniendo en cuenta la consideracion de que PC emplea 32 bits
 {
-    reg[15]+=salto;
-    reg[14]+=2;
-
+    *reg+=salto;
+    *reg2+=2;
 }
 
 void BX(uint32_t *reg, uint32_t Rm)
@@ -165,10 +165,10 @@ void BX(uint32_t *reg, uint32_t Rm)
     reg[15]=Rm;//Esta funcion guardo el contenido de un registro en el PC
 }
 
-void BLX(uint32_t *reg, uint32_t Rm)//Esta funcion guardo el contenido de un registro en el PC y pone a RL en la siguiente instruccion teniendo en cuenta la consideracion de que PC emplea 32 bits
+void BLX(uint32_t *reg, uint32_t *reg2, uint32_t Rm)//Esta funcion guardo el contenido de un registro en el PC y pone a RL en la siguiente instruccion teniendo en cuenta la consideracion de que PC emplea 32 bits
 {
-    reg[15]=Rm;
-    reg[14]+=2;
+    *reg=Rm;
+    *reg2+=2;
 }
 
 
