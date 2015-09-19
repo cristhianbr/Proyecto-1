@@ -47,16 +47,17 @@ int main(void)
     {
         ch = getch();            /* Espera entrada del usuario */
         clear();
-        instruction = getInstruction(instructions[reg[15]);
-        decodeInstruction(instruction,reg,bandera);
         if (j!=0)
         {
             mostrar_registro(reg);
+            move(2, 15); printw("%s",instructions[reg[15]]);
             move(4, 50); printw("Banderas");
             move(6, 50); printw("N=%d\n",bandera[0]);
             move(7, 50); printw("Z=%d\n",bandera[1]);
             move(8, 50); printw("C=%d\n",bandera[2]);
             move(9, 50); printw("V=%d\n",bandera[3]);
+            move(11, 50); printw("PC=%d\n",reg[15]*2);
+            move(12, 50); printw("LR=%d\n",reg[14]);
             move(20, 50); printw("Emulador ARM Cortex-M0");
             border( ACS_VLINE, ACS_VLINE,
                     ACS_HLINE, ACS_HLINE,
@@ -65,11 +66,12 @@ int main(void)
             refresh();	            /* Imprime en la pantalla Sin esto el printw no es mostrado */
         }
         j=1;
+        instruction = getInstruction(instructions[reg[15]]);
+        decodeInstruction(instruction,reg,bandera);
     }
     attroff(COLOR_PAIR(1));     	/* DEshabilita los colores Pair 1 */
     endwin();
 
-    for(i=0; i<num_instructions; i++)   {   free(read.array[i]);	}
 	free(read.array);
 
     	                    /* Finaliza el modo curses */
