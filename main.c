@@ -56,7 +56,7 @@ int main(void)
             move(7, 50); printw("Z=%d\n",bandera[1]);
             move(8, 50); printw("C=%d\n",bandera[2]);
             move(9, 50); printw("V=%d\n",bandera[3]);
-            move(11, 50); printw("PC=%d\n",reg[15]*2);
+            move(11, 50); printw("PC=%d\n",(reg[15]));
             move(12, 50); printw("LR=%d\n",reg[14]);
             move(20, 50); printw("Emulador ARM Cortex-M0");
             border( ACS_VLINE, ACS_VLINE,

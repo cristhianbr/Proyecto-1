@@ -143,7 +143,7 @@ void BLA(uint32_t *reg, int inm)// Esta funcion envia al PC a una direccion inme
 void BL(uint32_t *reg, uint32_t *reg2, int inm)//Esta funcion envia al PC a una direccion inmediata y manda al LR a la siguiente instruccion teniendo en cuenta la consideracion de que PC emplea 32 bits
 {
     *reg+=inm;
-    *reg2+=2;
+    *reg2=*reg+2;
 }
 
 void BX(uint32_t *reg, uint32_t Rm)
@@ -154,7 +154,7 @@ void BX(uint32_t *reg, uint32_t Rm)
 void BLX(uint32_t *reg, uint32_t *reg2, uint32_t Rm)//Esta funcion guardo el contenido de un registro en el PC y pone a LR en la siguiente instruccion teniendo en cuenta la consideracion de que PC emplea 32 bits
 {
     *reg=Rm;
-    *reg2+=2;
+    *reg2=*reg+2;
 }
 
 

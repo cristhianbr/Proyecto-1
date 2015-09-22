@@ -9,23 +9,23 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R')) // Si en el operando 3 no tengo nada y el operando 2 es un reguistro
         {
-            ADD(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            ADD(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#')) // Si en el operando 3 no hay nada y el operando 2 es un inmediato
         {
-            ADD(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            ADD(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R') // Si el operando 3 es un registro
         {
-            ADD(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
             registros[15]+=1;
+            ADD(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')//Si el operando 3 es un inmediato
         {
-            ADD(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
+            ADD(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
         /*
@@ -38,100 +38,100 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
-            AND(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            AND(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
-            AND(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            AND(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
-            AND(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
             registros[15]+=1;
+            AND(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
-            AND(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
+            AND(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"EOR")==0)
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
-            EOR(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            EOR(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
-            EOR(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            EOR(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
-            EOR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
             registros[15]+=1;
+            EOR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
-            EOR(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
+            EOR(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"MOV")==0)
     {
         if(instruction.op2_type=='R')
         {
-            MOV(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            MOV(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if(instruction.op2_type=='#')
         {
-            MOV(&registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            MOV(&registros[instruction.op1_value],instruction.op2_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"ORR")==0)
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
-            ORR(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            ORR(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
-            ORR(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            ORR(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
-            ORR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
             registros[15]+=1;
+            ORR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
-            ORR(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
+            ORR(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"SUB")==0)
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
-            SUB(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            SUB(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
-            SUB(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            SUB(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
-            SUB(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
             registros[15]+=1;
+            SUB(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
@@ -143,72 +143,72 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
-            LSLS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            LSLS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
-            LSLS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            LSLS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
-            LSLS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
             registros[15]+=1;
+            LSLS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
-            LSLS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
+            LSLS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"LSRS")==0)
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
-            LSRS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            LSRS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
-            LSRS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            LSRS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
-            LSRS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
             registros[15]+=1;
+            LSRS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
-            LSRS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
+            LSRS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"RORS")==0)
     {
         if(instruction.op2_type=='R')
         {
-            RORS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            RORS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if(instruction.op2_type=='#')
         {
-            RORS(&registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            RORS(&registros[instruction.op1_value],instruction.op2_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"BICS")==0)
     {
         if(instruction.op2_type=='R')
         {
-            BICS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            BICS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if(instruction.op2_type=='#')
         {
-            BICS(&registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            BICS(&registros[instruction.op1_value],instruction.op2_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"NOP")==0)
@@ -219,147 +219,147 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     {
         if(instruction.op2_type=='R')
         {
-            MVNS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            MVNS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if(instruction.op2_type=='#')
         {
-            MVNS(&registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            MVNS(&registros[instruction.op1_value],instruction.op2_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"CMN")==0)
     {
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
         {
-            CMN(registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            CMN(registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op1_type=='R')&&(instruction.op2_type=='#'))
         {
-            CMN(registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            CMN(registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if((instruction.op1_type=='#')&&(instruction.op2_type=='R'))
         {
-            CMN(instruction.op1_value,registros[instruction.op2_value],flag);
             registros[15]+=1;
+            CMN(instruction.op1_value,registros[instruction.op2_value],flag);
         }
         if((instruction.op1_type=='#')&&(instruction.op2_type=='#'))
         {
-            CMN(instruction.op1_value,instruction.op2_value,flag);
             registros[15]+=1;
+            CMN(instruction.op1_value,instruction.op2_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"CMP")==0)
     {
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
         {
-            CMP(registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            CMP(registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op1_type=='R')&&(instruction.op2_type=='#'))
         {
-            CMP(registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            CMP(registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if((instruction.op1_type=='#')&&(instruction.op2_type=='R'))
         {
-            CMP(instruction.op1_value,registros[instruction.op2_value],flag);
             registros[15]+=1;
+            CMP(instruction.op1_value,registros[instruction.op2_value],flag);
         }
         if((instruction.op1_type=='#')&&(instruction.op2_type=='#'))
         {
-            CMP(instruction.op1_value,instruction.op2_value,flag);
             registros[15]+=1;
+            CMP(instruction.op1_value,instruction.op2_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"RSBS")==0)
     {
         if(instruction.op2_type=='R')
         {
-            RSBS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            RSBS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if(instruction.op2_type=='#')
         {
-            RSBS(&registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            RSBS(&registros[instruction.op1_value],instruction.op2_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"REV")==0)
     {
         if(instruction.op2_type=='N')
         {
-            REV(&registros[instruction.op1_value],registros[instruction.op1_value]);
             registros[15]+=1;
+            REV(&registros[instruction.op1_value],registros[instruction.op1_value]);
         }
         else
         {
-            REV(&registros[instruction.op1_value],registros[instruction.op2_value]);
             registros[15]+=1;
+            REV(&registros[instruction.op1_value],registros[instruction.op2_value]);
         }
     }
     if(strcmp(instruction.mnemonic,"REV16")==0)
     {
         if(instruction.op2_type=='N')
         {
-            REV16(&registros[instruction.op1_value],registros[instruction.op1_value]);
             registros[15]+=1;
+            REV16(&registros[instruction.op1_value],registros[instruction.op1_value]);
         }
         else
         {
-            REV16(&registros[instruction.op1_value],registros[instruction.op2_value]);
             registros[15]+=1;
+            REV16(&registros[instruction.op1_value],registros[instruction.op2_value]);
         }
     }
     if(strcmp(instruction.mnemonic,"REVSH")==0)
     {
         if(instruction.op2_type=='N')
         {
-            REVSH(&registros[instruction.op1_value],registros[instruction.op1_value]);
             registros[15]+=1;
+            REVSH(&registros[instruction.op1_value],registros[instruction.op1_value]);
         }
         else
         {
-            REVSH(&registros[instruction.op1_value],registros[instruction.op2_value]);
             registros[15]+=1;
+            REVSH(&registros[instruction.op1_value],registros[instruction.op2_value]);
         }
     }
     if(strcmp(instruction.mnemonic,"TST")==0)
     {
         if(instruction.op2_type=='N')
         {
-            TST(&registros[instruction.op1_value],registros[instruction.op1_value]);
             registros[15]+=1;
+            TST(&registros[instruction.op1_value],registros[instruction.op1_value]);
         }
         else
         {
-            TST(&registros[instruction.op1_value],registros[instruction.op2_value]);
             registros[15]+=1;
+            TST(&registros[instruction.op1_value],registros[instruction.op2_value]);
         }
     }
     if(strcmp(instruction.mnemonic,"MUL")==0)
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
-            MUL(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
             registros[15]+=1;
+            MUL(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
-            MUL(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
             registros[15]+=1;
+            MUL(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
-            MUL(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
             registros[15]+=1;
+            MUL(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
-            MUL(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
+            MUL(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
 
