@@ -12,7 +12,7 @@ void B(uint32_t *reg, int inm)// Esta funcion envia al PC a una direccion inmedi
 
 void BEQ(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de cero esta activa de lo contrario solo va a la siguiente instruccion
 {
-    if(flags[Z]=='1')
+    if(flags[Z]==1)
         *reg+=inm;
     else
         *reg+=1;
@@ -20,7 +20,7 @@ void BEQ(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BNE(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de cero esta inactiva de lo contrario solo va a la siguiente instruccion
 {
-    if(flags[Z]=='0')
+    if(flags[Z]==0)
         *reg+=inm;
     else
         *reg+=1;
@@ -29,7 +29,7 @@ void BNE(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BCS(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de carry esta activa de lo contrario solo va a la siguiente instruccion
 {
-    if(flags[C]=='1')
+    if(flags[C]==1)
         *reg+=inm;
     else
         *reg+=1;
@@ -38,7 +38,7 @@ void BCS(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BCC(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de cero esta inactiva de lo contrario solo va a la siguiente instruccion
 {
-    if(flags[C]=='0')
+    if(flags[C]==0)
         *reg+=inm;
     else
         *reg+=1;
@@ -47,7 +47,7 @@ void BCC(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BMI(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de negativo esta activa de lo contrario solo va a la siguiente instruccion
 {
-    if(flags[N]=='1')
+    if(flags[N]==1)
         *reg+=inm;
     else
         *reg+=1;
@@ -56,7 +56,7 @@ void BMI(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BPL(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de negativo esta inactiva de lo contrario solo va a la siguiente instruccion
 {
-    if(flags[N]=='0')
+    if(flags[N]==0)
         *reg+=inm;
     else
         *reg+=1;
@@ -65,7 +65,7 @@ void BPL(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BVS(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de sobre flujo esta activa de lo contrario solo va a la siguiente instruccion
 {
-    if(flags[V]=='1')
+    if(flags[V]==1)
         *reg+=inm;
     else
         *reg+=1;
@@ -74,7 +74,7 @@ void BVS(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BVC(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de sobre flujo esta inactiva de lo contrario solo va a la siguiente instruccion
 {
-    if(flags[V]=='0')
+    if(flags[V]==0)
         *reg+=inm;
     else
         *reg+=1;
@@ -83,7 +83,7 @@ void BVC(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BHI(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de cero esta inactiva y la bandera de carry activa de lo contrario solo va a la siguiente instruccion
 {
-    if((flags[C]=='1')&&(flags[Z]=='0'))
+    if((flags[C]==1)&&(flags[Z]==0))
         *reg+=inm;
     else
         *reg+=1;
@@ -92,7 +92,7 @@ void BHI(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BLS(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una direccion inmediata si la bandera de cero esta activa o la bandera de carry inactiva de lo contrario solo va a la siguiente instruccion
 {
-    if((flags[C]=='0')||(flags[Z]=='1'))
+    if((flags[C]==0)||(flags[Z]==1))
         *reg+=inm;
     else
         *reg+=1;
@@ -119,7 +119,7 @@ void BLT(uint32_t *reg, int inm, char *flags)// Esta funcion envia al PC a una d
 
 void BGT(uint32_t *reg, int inm, char *flags)//Esta funcion envia al PC a una direccion inmediata si la bandera de cero esta inactiva y la bandera de negatvo esta en el mismo estado de la de sobre flujo de lo contrario solo va a la siguiente instruccion
 {
-    if((flags[Z]=='0')&&(flags[N]==flags[V]))
+    if((flags[Z]==0)&&(flags[N]==flags[V]))
         *reg+=inm;
     else
         *reg+=1;
@@ -128,7 +128,7 @@ void BGT(uint32_t *reg, int inm, char *flags)//Esta funcion envia al PC a una di
 
 void BLE(uint32_t *reg, int inm, char *flags)//Esta funcion envia al PC a una direccion inmediata si la bandera de cero esta inactiva o la bandera de negatvo esta en el un estado diferente de la de sobre flujo de lo contrario solo va a la siguiente instruccion
 {
-    if((flags[Z]=='0')||(flags[N]!=flags[V]))
+    if((flags[Z]==0)||(flags[N]!=flags[V]))
         *reg+=inm;
     else
         *reg+=1;
@@ -142,8 +142,8 @@ void BLA(uint32_t *reg, int inm)// Esta funcion envia al PC a una direccion inme
 
 void BL(uint32_t *reg, uint32_t *reg2, int inm)//Esta funcion envia al PC a una direccion inmediata y manda al LR a la siguiente instruccion teniendo en cuenta la consideracion de que PC emplea 32 bits
 {
-    *reg+=inm;
     *reg2=*reg+2;
+    *reg+=inm;
 }
 
 void BX(uint32_t *reg, uint32_t Rm)
@@ -153,8 +153,8 @@ void BX(uint32_t *reg, uint32_t Rm)
 
 void BLX(uint32_t *reg, uint32_t *reg2, uint32_t Rm)//Esta funcion guardo el contenido de un registro en el PC y pone a LR en la siguiente instruccion teniendo en cuenta la consideracion de que PC emplea 32 bits
 {
-    *reg=Rm;
     *reg2=*reg+2;
+    *reg+=Rm;
 }
 
 
