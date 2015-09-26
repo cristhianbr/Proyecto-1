@@ -5,27 +5,27 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     // instruction.op1_value --> Valor primer operando
     // instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
     // ... Igual para los otros operandos
-	if(strcmp(instruction.mnemonic,"ADD")==0) //Si la intruccion es ADD :
+	if(strcmp(instruction.mnemonic,"ADDS")==0)   //Si la intruccion es ADD :
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R')) // Si en el operando 3 no tengo nada y el operando 2 es un reguistro
         {
             registros[15]+=1;
-            ADD(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
+            ADDS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#')) // Si en el operando 3 no hay nada y el operando 2 es un inmediato
         {
             registros[15]+=1;
-            ADD(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
+            ADDS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R') // Si el operando 3 es un registro
         {
             registros[15]+=1;
-            ADD(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
+            ADDS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')//Si el operando 3 es un inmediato
         {
             registros[15]+=1;
-            ADD(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
+            ADDS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
         /*
@@ -33,51 +33,86 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         *  Para la comparacion de los demas mnemonicos, se evaluan las mismas condiciones que en ADD *
         **********************************************************************************************
         */
-
-    if(strcmp(instruction.mnemonic,"AND")==0)
+    if(strcmp(instruction.mnemonic,"ADCS")==0) //Si la intruccion es ADCS :
     {
-        if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='R')) // Si en el operando 3 no tengo nada y el operando 2 es un reguistro
         {
             registros[15]+=1;
-            AND(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
+            ADCS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
-        if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='#')) // Si en el operando 3 no hay nada y el operando 2 es un inmediato
         {
             registros[15]+=1;
-            AND(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
+            ADCS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
-        if(instruction.op3_type=='R')
+        if(instruction.op3_type=='R') // Si el operando 3 es un registro
         {
             registros[15]+=1;
-            AND(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
+            ADCS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
-        if(instruction.op3_type=='#')
+        if(instruction.op3_type=='#')//Si el operando 3 es un inmediato
         {
             registros[15]+=1;
-            AND(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
+            ADCS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
-    if(strcmp(instruction.mnemonic,"EOR")==0)
+    if(strcmp(instruction.mnemonic,"ANDS")==0)
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
             registros[15]+=1;
-            EOR(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
+            ANDS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
             registros[15]+=1;
-            EOR(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
+            ANDS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
             registros[15]+=1;
-            EOR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
+            ANDS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
             registros[15]+=1;
-            EOR(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
+            ANDS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
+        }
+    }
+    if(strcmp(instruction.mnemonic,"EORS")==0)
+    {
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
+        {
+            registros[15]+=1;
+            EORS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
+        }
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
+        {
+            registros[15]+=1;
+            EORS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
+        }
+        if(instruction.op3_type=='R')
+        {
+            registros[15]+=1;
+            EORS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
+        }
+        if(instruction.op3_type=='#')
+        {
+            registros[15]+=1;
+            EORS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
+        }
+    }
+    if(strcmp(instruction.mnemonic,"MOVS")==0)
+    {
+        if(instruction.op2_type=='R')
+        {
+            registros[15]+=1;
+            MOVS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
+        }
+        if(instruction.op2_type=='#')
+        {
+            registros[15]+=1;
+            MOVS(&registros[instruction.op1_value],instruction.op2_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"MOV")==0)
@@ -85,58 +120,58 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         if(instruction.op2_type=='R')
         {
             registros[15]+=1;
-            MOV(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
+            MOV(&registros[instruction.op1_value],registros[instruction.op2_value]);
         }
         if(instruction.op2_type=='#')
         {
             registros[15]+=1;
-            MOV(&registros[instruction.op1_value],instruction.op2_value,flag);
+            MOV(&registros[instruction.op1_value],instruction.op2_value);
         }
     }
-    if(strcmp(instruction.mnemonic,"ORR")==0)
+    if(strcmp(instruction.mnemonic,"ORRS")==0)
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
             registros[15]+=1;
-            ORR(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
+            ORRS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
             registros[15]+=1;
-            ORR(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
+            ORRS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
             registros[15]+=1;
-            ORR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
+            ORRS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
             registros[15]+=1;
-            ORR(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
+            ORRS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
-    if(strcmp(instruction.mnemonic,"SUB")==0)
+    if(strcmp(instruction.mnemonic,"SUBS")==0)
     {
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R'))
         {
             registros[15]+=1;
-            SUB(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
+            SUBS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#'))
         {
             registros[15]+=1;
-            SUB(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
+            SUBS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
         }
         if(instruction.op3_type=='R')
         {
             registros[15]+=1;
-            SUB(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
+            SUBS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
         }
         if(instruction.op3_type=='#')
         {
-            SUB(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
             registros[15]+=1;
+            SUBS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"LSLS")==0)
@@ -196,6 +231,19 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         {
             registros[15]+=1;
             RORS(&registros[instruction.op1_value],instruction.op2_value,flag);
+        }
+    }
+    if(strcmp(instruction.mnemonic,"ASRS")==0)
+    {
+        if(instruction.op2_type=='R')
+        {
+            registros[15]+=1;
+            ASRS(&registros[instruction.op1_value],registros[instruction.op2_value],flag);
+        }
+        if(instruction.op2_type=='#')
+        {
+            registros[15]+=1;
+            ASRS(&registros[instruction.op1_value],instruction.op2_value,flag);
         }
     }
     if(strcmp(instruction.mnemonic,"BICS")==0)
@@ -476,6 +524,29 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         else
         {
             BLX(&registros[15],&registros[14],registros[instruction.op1_value]);
+        }
+    }
+    if(strcmp(instruction.mnemonic,"SBCS")==0) //Si la intruccion es ADCS :
+    {
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='R')) // Si en el operando 3 no tengo nada y el operando 2 es un reguistro
+        {
+            registros[15]+=1;
+            SBCS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
+        }
+        if((instruction.op3_type=='N')&&(instruction.op2_type=='#')) // Si en el operando 3 no hay nada y el operando 2 es un inmediato
+        {
+            registros[15]+=1;
+            SBCS(&registros[instruction.op1_value],registros[instruction.op1_value],instruction.op2_value,flag);
+        }
+        if(instruction.op3_type=='R') // Si el operando 3 es un registro
+        {
+            registros[15]+=1;
+            SBCS(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],flag);
+        }
+        if(instruction.op3_type=='#')//Si el operando 3 es un inmediato
+        {
+            registros[15]+=1;
+            SBCS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
 
