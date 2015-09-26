@@ -57,9 +57,16 @@ void ORRS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag);	//funcion de la s
 void SUBS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag);	//funcion de la resta aritmetica
 
 /**
-*\param *Rp Direccion en donde se guardara el resultado de la resta aritmetica.
+*\param *Rp Direccion en donde se guardara el resultado de la multiplicacion aritmetica.
 *\param Rm Registro 1 a operar.
 *\param Rn Registro 2 a operar.
 */
 
 void MUL(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag);
+
+/**
+*\param *Rp Direccion en donde se guardara el resultado de la resta CON CARRY.
+*\param Rm Registro 1 a operar.
+*\param Rn Registro 2 a operar.
+*/
+void SBCS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag);
