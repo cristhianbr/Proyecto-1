@@ -102,7 +102,7 @@ void REVSH(uint32_t *Rnd, uint32_t Rm);
 
 
 /**
-*\brief Funcion que realiza una AND entre dos registros, no gustada el resultado, solo modifica banderas.
+*\brief Funcion que realiza una AND entre dos registros, no guarda el resultado, solo modifica banderas.
 *\param *Rdn Puntero con la direccion de el registro que se va a mover, y en donde se guardara el resultado obtenido.
 *\param Rm Numero de posiciones a mover.
 *\param flag Puntero con la direccion de el arreglo de banderas.
