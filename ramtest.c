@@ -1,0 +1,31 @@
+#include <stdint.h>
+#include <stdlib.h>
+#include "ramtest.h"
+
+void PUSH(uint32_t *regs, uint8_t MemRAM[0xff], uint32_t R[16])
+{
+    int i,j;
+    uint32_t address;
+
+    for(i=0;i<16;i++)
+    {
+        if((R[i]==1))
+        {
+            j++;
+        }
+    }
+    address=regs[13]-(j*4);
+    for(i=0;i<16;i++)
+    {
+        if(R[i]==1)
+        {
+            MemRAM[address]=(regs[i]);
+            MemRAM[address+1]=(regs[i]>>8);
+            MemRAM[address+2]=(regs[i]>>16);
+            MemRAM[address+3]=(regs[i]>>24);
+        }
+        address=address+4;
+    }
+    regs[13]=regs[13]-(j*4);
+}
+
