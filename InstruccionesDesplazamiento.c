@@ -50,13 +50,15 @@ void MVNS(uint32_t *Rnd, uint32_t Rm, char *flag) //Funcion  que realiza el comp
 void CMN(uint32_t Rm, uint32_t Rn, char *flag) // Funcion que realiza una suma pero no guarda el resultado, solo modifica banderas
 {
     uint32_t Rp;
+    int32_t Rs;
     Rp=Rm+Rn;
+    Rs=Rm+Rn;
     if(((Rn>=(1<<31))&&(Rm>=(1<<31)))||((Rm>=(1<<31))&&(Rn<(1<<31))&&(Rp<(1<<31)))||((Rn>=(1<<31))&&(Rm<(1<<31))&&(Rp<(1<<31))))
     {
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if(((2147483647<Rm)&&(2147483647<Rn)&&(2147483647>=Rp))||((2147483647>=Rm)&&(2147483647>=Rm)&&(2147483647<Rp)))
+    if (Rp==Rs)
     {
         flag[V]=1;
     }
@@ -66,14 +68,16 @@ void CMN(uint32_t Rm, uint32_t Rn, char *flag) // Funcion que realiza una suma p
 void CMP(uint32_t Rm, uint32_t Rn, char *flag) // Funcion que realiza una resta pero no guarda el resultado, solo modifica banderas.
 {
     uint32_t Rp;
+    int32_t Rs;
     Rn=~Rn+1;
     Rp=Rm+Rn;
+    Rs=Rm+Rn;
     if(((Rn>=(1<<31))&&(Rm>=(1<<31)))||((Rm>=(1<<31))&&(Rn<(1<<31))&&(Rp<(1<<31)))||((Rn>=(1<<31))&&(Rm<(1<<31))&&(Rp<(1<<31))))
     {
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if(((2147483647<Rm)&&(2147483647<Rn)&&(2147483647>=Rp))||((2147483647>=Rm)&&(2147483647>=Rm)&&(2147483647<Rp)))
+    if (Rp==Rs)
     {
         flag[V]=1;
     }

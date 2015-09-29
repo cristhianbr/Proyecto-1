@@ -21,6 +21,7 @@ typedef struct
 	uint32_t op1_value;
 	uint32_t op2_value;
 	uint32_t op3_value;
+	uint8_t  registers_list[16];
 }instruction_t;
 
 

@@ -5,13 +5,15 @@
 
 void ADDS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la suma aritmetica
 {
+	int32_t Rs;
 	*Rp=Rm+Rn;
+	Rs=Rm+Rn;
 	if(((Rn>=(1<<31))&&(Rm>=(1<<31)))||((Rm>=(1<<31))&&(Rn<(1<<31))&&(*Rp<(1<<31)))||((Rn>=(1<<31))&&(Rm<(1<<31))&&(*Rp<(1<<31))))
     {
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if(((2147483647<Rm)&&(2147483647<Rn)&&(2147483647>=*Rp))||((2147483647>=Rm)&&(2147483647>=Rm)&&(2147483647<*Rp)))
+    if (*Rp==Rs)
     {
         flag[V]=1;
     }
@@ -21,14 +23,16 @@ void ADDS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la su
 
 void ADCS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)
 {
+    int32_t Rs;
     Rm+=flag[C];
     *Rp=Rm+Rn;
+    Rs=Rm+Rn;
     if(((Rn>=(1<<31))&&(Rm>=(1<<31)))||((Rm>=(1<<31))&&(Rn<(1<<31))&&(*Rp<(1<<31)))||((Rn>=(1<<31))&&(Rm<(1<<31))&&(*Rp<(1<<31))))
     {
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if(((2147483647<Rm)&&(2147483647<Rn)&&(2147483647>=*Rp))||((2147483647>=Rm)&&(2147483647>=Rm)&&(2147483647<*Rp)))
+    if(*Rp==Rs)
     {
         flag[V]=1;
     }
@@ -62,14 +66,16 @@ void ORRS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la su
 }
 void SUBS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la resta aritmetica
 {
+	int32_t Rs;
 	Rn=~Rn+1;
 	*Rp=Rm+Rn;
+	Rs=Rm+Rn;
 	if(((Rn>=(1<<31))&&(Rm>=(1<<31)))||((Rm>=(1<<31))&&(Rn<(1<<31))&&(*Rp<(1<<31)))||((Rn>=(1<<31))&&(Rm<(1<<31))&&(*Rp<(1<<31))))
     {
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if(((2147483647<Rm)&&(2147483647<Rn)&&(2147483647>=*Rp))||((2147483647>=Rm)&&(2147483647>=Rm)&&(2147483647<*Rp)))
+    if (*Rp==Rs)
     {
         flag[V]=1;
     }
@@ -83,15 +89,17 @@ void MUL(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la mul
 }
 void SBCS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)
 {
+    int Rs;
     Rn=~Rn+1;
     Rm+=flag[C];
     *Rp=Rm+Rn;
+    Rs=Rm+Rn;
     if(((Rn>=(1<<31))&&(Rm>=(1<<31)))||((Rm>=(1<<31))&&(Rn<(1<<31))&&(*Rp<(1<<31)))||((Rn>=(1<<31))&&(Rm<(1<<31))&&(*Rp<(1<<31))))
     {
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if(((2147483647<Rm)&&(2147483647<Rn)&&(2147483647>=*Rp))||((2147483647>=Rm)&&(2147483647>=Rm)&&(2147483647<*Rp)))
+    if(*Rp==Rs)
     {
         flag[V]=1;
     }
