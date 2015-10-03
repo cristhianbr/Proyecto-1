@@ -1,1 +1,3 @@
-void PUSH(uint32_t *regs, uint8_t MemRAM[0xff], uint32_t R[16]);
+void PUSH(uint32_t regs, uint8_t *MemRAM, uint8_t Reg);
+void POP(uint32_t *regs, uint8_t MemRAM, uint8_t Reg);
+

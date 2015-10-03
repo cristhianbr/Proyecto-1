@@ -1,6 +1,6 @@
 #include "decoder.h"
 
-void decodeInstruction(instruction_t instruction, uint32_t *registros, char *flag)
+void decodeInstruction(instruction_t instruction, uint32_t *registros, char *flag, uint8_t *MemRAM)
 {
     // instruction.op1_value --> Valor primer operando
     // instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
@@ -496,7 +496,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     }
 
     if(strcmp(instruction.mnemonic,"BL")==0) /*Esta funcion envia al PC a una direccion inmediata y manda al LR a la siguiente instruccion teniendo en cuenta
-                                             la consideracion de que PC emplea 32 bits*/
+                                                la consideracion de que PC emplea 32 bits*/
     {
         BL(&registros[15],&registros[14],instruction.op1_value);
     }
@@ -548,6 +548,16 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             registros[15]+=1;
             SBCS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
+    }
+    if (strcmp(instruction.mnemonic,"PUSH")==0)
+    {
+        registros[15]+=1;
+        PUSH(registros, MemRAM, instruction.registers_list);
+    }
+    if (strcmp(instruction.mnemonic,"POP")==0)
+    {
+        registros[15]+=1;
+        POP(registros, MemRAM, instruction.registers_list);
     }
 
 }

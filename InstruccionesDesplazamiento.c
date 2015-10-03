@@ -58,7 +58,7 @@ void CMN(uint32_t Rm, uint32_t Rn, char *flag) // Funcion que realiza una suma p
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if (Rp==Rs)
+    if (Rp=!Rs)
     {
         flag[V]=1;
     }
@@ -77,7 +77,7 @@ void CMP(uint32_t Rm, uint32_t Rn, char *flag) // Funcion que realiza una resta 
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if (Rp==Rs)
+    if (Rp=!Rs)
     {
         flag[V]=1;
     }
