@@ -560,6 +560,145 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         POP(registros, MemRAM, instruction.registers_list);
     }
 
+    if(strcmp(instruction.mnemonic,"LDR")==0)
+    {
+        uint32_t imm32;
+        registros[15]+=1;
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R')&&(instruction.op2_value==13))
+        {
+            if(instruction.op3_value<256)
+            {
+                imm32=(uint32_t)(instruction.op3_value<<2);
+                LDR(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+            }
+        }
+
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R')&&(instruction.op2_value==15))
+        {
+            if(instruction.op3_value<256)
+            {
+                imm32=(uint32_t)(instruction.op3_value<<2);
+                LDR(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+            }
+        }
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        {
+            if(instruction.op3_value<32)
+            {
+                imm32=(uint32_t)(instruction.op3_value<<2);
+                LDR(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+            }
+        }
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        {
+            LDR(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+        }
+    }
+
+    if(strcmp(instruction.mnemonic,"LDRB")==0)
+    {
+         if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        {
+            if(instruction.op3_value<32)
+            {
+                imm32=(uint32_t)(instruction.op3_value<<2);
+                LDR(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+            }
+        }
+         if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        {
+            LDR(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+        }
+    }
+
+    if(strcmp(instruction.mnemonic,"LDRH")==0)
+    {
+          if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        {
+            if(instruction.op3_value<32)
+            {
+                imm32=(uint32_t)(instruction.op3_value<<2);
+                LDR(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+            }
+        }
+         if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        {
+            LDR(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+        }
+
+    }
+
+    if(strcmp(instruction.mnemonic,"LDRSB")==0)
+    {
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        {
+            LDR(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+        }
+    }
+
+    if(stcrmp(instruction.mnemonic,"LDRSH")==0)
+    {
+        if((instruction.op2_type=='R')&&(instruction.op3_type=='R'))
+        {
+            LDRSH(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value,MemRAM]);
+        }
+    }
+
+    if(strcmp(instruction.mnemonic,"STR")==0)
+    {
+         if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        {
+            if(instruction.op3_value<32)
+            {
+                imm32=(uint32_t)(instruction.op3_value<<2);
+                STR(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+            }
+        }
+
+        if(instruction.op3_value<256)
+            {
+                imm32=(uint32_t)(instruction.op3_value<<2);
+                STR(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+            }
+
+         if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        {
+            STR(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+        }
+    }
+
+  if(strcmp(instruction.mnemonic,"STRB")==0)
+    {
+         if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        {
+            if(instruction.op3_value<32)
+            {
+                imm32=(uint32_t)(instruction.op3_value<<2);
+                STRB(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+            }
+        }
+
+         if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        {
+            STRB(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+        }
+    }
+    if(strcmp(instruction.mnemonic,"STRH")==0)
+    {
+         if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        {
+            if(instruction.op3_value<32)
+            {
+                imm32=(uint32_t)(instruction.op3_value<<2);
+                STRH(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+            }
+        }
+
+         if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        {
+            STRH(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+        }
+    }
 }
 
 instruction_t getInstruction(char* instStr)
@@ -603,6 +742,10 @@ instruction_t getInstruction(char* instStr)
 				break;
 
 			case 2:
+
+			    if(split[0]=='[')
+                    split++;
+
 				instruction.op2_type  = split[0];
 				instruction.op2_value = (uint32_t)strtoll(split+1, NULL, 0);
 				break;
