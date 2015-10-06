@@ -1,0 +1,101 @@
+# depslib dependency file v1.0
+1440515514 source:c:\users\christian\desktop\proyecto-1\alu.c
+	"ALU.h"
+
+1440515453 c:\users\christian\desktop\proyecto-1\alu.h
+
+1440515453 source:c:\users\christian\desktop\proyecto-1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"registros.h"
+	"ALU.h"
+
+1440515453 c:\users\christian\desktop\proyecto-1\registros.h
+
+1440515453 source:c:\users\christian\desktop\proyecto-1\registros.c
+	"registros.h"
+
+1440735806 source:c:\users\christian\proyecto-1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"registros.h"
+	"ALU.h"
+	"banderas.h"
+
+1440734987 c:\users\christian\proyecto-1\registros.h
+
+1440738384 c:\users\christian\proyecto-1\alu.h
+
+1440514819 source:c:\users\christian\proyecto-1\registros.c
+	"registros.h"
+
+1440737603 source:c:\users\christian\proyecto-1\alu.c
+	"ALU.h"
+
+1440734468 c:\users\christian\proyecto-1\banderas.h
+
+1443709495 source:c:\users\christian\nueva\proyecto-1\alu.c
+	"ALU.h"
+	"banderas.h"
+
+1443221688 c:\users\christian\nueva\proyecto-1\alu.h
+	<stdint.h>
+
+1443813719 source:c:\users\christian\nueva\proyecto-1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"registros.h"
+	"ALU.h"
+	"banderas.h"
+	<stdint.h>
+	"curses.h"
+	"decoder.h"
+
+1442027797 c:\users\christian\nueva\proyecto-1\registros.h
+	<stdint.h>
+
+1443113964 c:\users\christian\nueva\proyecto-1\banderas.h
+	<stdint.h>
+
+1443207589 source:c:\users\christian\nueva\proyecto-1\registros.c
+	"registros.h"
+	<stdint.h>
+	"curses.h"
+
+1443146571 source:c:\users\christian\nueva\proyecto-1\banderas.c
+	"banderas.h"
+	<math.h>
+
+1443709495 source:c:\users\christian\nueva\proyecto-1\instruccionesdesplazamiento.c
+	"InstruccionesDesplazamiento.h"
+	"banderas.h"
+
+1443206012 c:\users\christian\nueva\proyecto-1\instruccionesdesplazamiento.h
+	<stdint.h>
+
+1441845355 source:c:\users\christian\nueva\proyecto-1\test.c
+	<stdio.h>
+	<stdlib.h>
+	"registros.h"
+	"ALU.h"
+	"banderas.h"
+	<stdint.h>
+
+1442027797 c:\users\christian\nueva\proyecto-1\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+
+1443851100 source:c:\users\christian\nueva\proyecto-1\decoder.c
+	"decoder.h"
+
+1443713647 c:\users\christian\nueva\proyecto-1\decoder.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<stdint.h>
+
+1443202358 source:c:\users\christian\nueva\proyecto-1\saltos.c
+	"banderas.h"
+

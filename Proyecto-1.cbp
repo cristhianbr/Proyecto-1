@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Proyecto-1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Proyecto-1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Proyecto-1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="ALU.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ALU.h" />
+		<Unit filename="InstruccionesDesplazamiento.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="InstruccionesDesplazamiento.h" />
+		<Unit filename="Load-Store.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Load-Store.h" />
+		<Unit filename="banderas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="banderas.h" />
+		<Unit filename="decoder.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decoder.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ramtest.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ramtest.h" />
+		<Unit filename="registros.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="registros.h" />
+		<Unit filename="saltos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="saltos.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

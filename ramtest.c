@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "ramtest.h"
 
-void PUSH(uint32_t regs, uint8_t *MemRAM, uint8_t Reg)
+void PUSH(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
 {
     int i,j=0;
     uint32_t address;
@@ -29,7 +29,7 @@ void PUSH(uint32_t regs, uint8_t *MemRAM, uint8_t Reg)
     regs[13]=regs[13]-(j*4);
 }
 
-void POP(uint32_t *regs, uint8_t MemRAM, uint8_t Reg)
+void POP(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
 {
      int i,j;
     uint32_t address;
