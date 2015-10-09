@@ -1,4 +1,4 @@
-/*#include <stdint.h>
+#include <stdint.h>
 #include <stdlib.h>
 
 uint32_t address=0;
@@ -28,7 +28,7 @@ void LDRH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)
 
 void LDRSB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)
 {
-    uint32_t Aux, Aux2,Aux3=~0;
+    uint32_t Aux, Aux2, Aux3=~0;
 
     address=Rm+Rn;
     *Rt=Ram[address];
@@ -36,10 +36,10 @@ void LDRSB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)
     Aux2=Aux>>7;
 
 	if(Aux2==1)
-		{
-		Axu3=(Aux3<<8);
-		*Rt=(Axu1)|(Axu3);
-		}
+    {
+		Aux3=(Aux3<<8);
+        *Rt=(Aux)|(Aux3);
+    }
 	else
 		*Rt=Ram[address];
 }
@@ -56,8 +56,8 @@ void LDRSH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
 
 	if(Aux2==1)
 		{
-		Axu3=(Aux3<<16);
-		*Rt=(Axu1)|(Axu3);
+		Aux3=(Aux3<<16);
+		*Rt=(Aux)|(Aux3);
 		}
 	else
 		*Rt=address;
@@ -85,4 +85,3 @@ void STRH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
      Ram[address+1]=(uint8_t)(*Rt>>8);
      Ram[address]=(uint8_t)(*Rt);
 }
-*/
