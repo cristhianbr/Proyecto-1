@@ -1,4 +1,4 @@
-#include <stdint.h>
+/*#include <stdint.h>
 #include <stdlib.h>
 
 uint32_t address=0;
@@ -71,7 +71,7 @@ void STR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
     Ram[address+2]=(uint8_t)(*Rt>>16);
     Ram[address+1]=(uint8_t)(*Rt>>8);
     Ram[address]=(uint8_t)(*Rt);
-    
+
 }
 
 void STRB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
@@ -85,3 +85,4 @@ void STRH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
      Ram[address+1]=(uint8_t)(*Rt>>8);
      Ram[address]=(uint8_t)(*Rt);
 }
+*/

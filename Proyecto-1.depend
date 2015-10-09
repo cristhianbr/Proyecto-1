@@ -41,7 +41,7 @@
 1443221688 c:\users\christian\nueva\proyecto-1\alu.h
 	<stdint.h>
 
-1443813719 source:c:\users\christian\nueva\proyecto-1\main.c
+1444147412 source:c:\users\christian\nueva\proyecto-1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"registros.h"
@@ -87,7 +87,7 @@
 	<stdio.h>
 	<wchar.h>
 
-1443851100 source:c:\users\christian\nueva\proyecto-1\decoder.c
+1444146557 source:c:\users\christian\nueva\proyecto-1\decoder.c
 	"decoder.h"
 
 1443713647 c:\users\christian\nueva\proyecto-1\decoder.h
@@ -98,4 +98,14 @@
 
 1443202358 source:c:\users\christian\nueva\proyecto-1\saltos.c
 	"banderas.h"
+
+1444142443 source:c:\users\christian\nueva\proyecto-1\load-store.c
+	<stdlib.h>
+
+1444142181 source:c:\users\christian\nueva\proyecto-1\ramtest.c
+	<stdint.h>
+	<stdlib.h>
+	"ramtest.h"
+
+1444142181 c:\users\christian\nueva\proyecto-1\ramtest.h
 

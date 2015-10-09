@@ -603,6 +603,9 @@ instruction_t getInstruction(char* instStr)
 				break;
 
 			case 2:
+				if (split[0]=='[')
+                    split++;
+
 				instruction.op2_type  = split[0];
 				instruction.op2_value = (uint32_t)strtoll(split+1, NULL, 0);
 				break;

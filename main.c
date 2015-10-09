@@ -33,14 +33,15 @@ int main(void)
     bkgd(COLOR_PAIR(1));           //se rellena el todo el fondo de color cyan
 
 	mostrar_registro(reg);
-	move(4, 50); printw("Banderas");
-	move(6, 50); printw("N=%d\n",bandera[0]);
-    move(7, 50); printw("Z=%d\n",bandera[1]);
-    move(8, 50); printw("C=%d\n",bandera[2]);
-    move(9, 50); printw("S=%d\n",bandera[3]);
-    move(11, 50); printw("PC=%d\n",(reg[15])*2);
-    move(12, 50); printw("LR=%d\n",reg[14]);
-    move(20, 50); printw("Emulador ARM Cortex-M0");
+    move(2, 15); printw("%s",instructions[reg[15]]);
+    move(4, 40); printw("Banderas");
+    move(6, 40); printw("N=%d\n",bandera[0]);
+    move(7, 40); printw("Z=%d\n",bandera[1]);
+    move(8, 40); printw("C=%d\n",bandera[2]);
+    move(9, 40); printw("V=%d\n",bandera[3]);
+    move(11, 40); printw("PC=%X\n",reg[15]*2);
+    move(12, 40); printw("LR=%X\n",reg[14]*2);
+    move(4, 55); printw("Emulador ARM Cortex-M0");
     border( ACS_VLINE, ACS_VLINE,
             ACS_HLINE, ACS_HLINE,
             ACS_ULCORNER, ACS_URCORNER,
@@ -54,15 +55,15 @@ int main(void)
         {
             mostrar_registro(reg);
             move(2, 15); printw("%s",instructions[reg[15]]);
-            move(4, 50); printw("Banderas");
-            move(6, 50); printw("N=%d\n",bandera[0]);
-            move(7, 50); printw("Z=%d\n",bandera[1]);
-            move(8, 50); printw("C=%d\n",bandera[2]);
-            move(9, 50); printw("V=%d\n",bandera[3]);
-            move(11, 50); printw("PC=%X\n",reg[15]*2);
-            move(12, 50); printw("LR=%X\n",reg[14]*2);
-            move(20, 50); printw("Emulador ARM Cortex-M0");
-            move(23, 50); printw("Presione Q para Salir");
+            move(4, 40); printw("Banderas");
+            move(6, 40); printw("N=%d\n",bandera[0]);
+            move(7, 40); printw("Z=%d\n",bandera[1]);
+            move(8, 40); printw("C=%d\n",bandera[2]);
+            move(9, 40); printw("V=%d\n",bandera[3]);
+            move(11, 40); printw("PC=%X\n",reg[15]*2);
+            move(12, 40); printw("LR=%X\n",reg[14]*2);
+            move(4, 55); printw("Emulador ARM Cortex-M0");
+            move(5, 55); printw("Presione Q para Salir");
             border( ACS_VLINE, ACS_VLINE,
                     ACS_HLINE, ACS_HLINE,
                     ACS_ULCORNER, ACS_URCORNER,
