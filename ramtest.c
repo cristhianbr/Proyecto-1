@@ -47,10 +47,13 @@ void POP(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
     {
         if(Reg[i]==1)
         {
-            regs[i]=(MemRAM[address])|(MemRAM[address+1]<<8)|(MemRAM[address+2]<<16)|(MemRAM[address+3]<<24);
+            regs[i]=(MemRAM[address]);
+            (reg[i]>>8)=(MemRAM[address+1]);
+            (reg[i]>>16)=(MemRAM[address+2]);
+            (reg[i]>>24)=(MemRAM[address+3]);
         }
         address=address+4;
     }
         regs[13]=regs[13]+(j*4);
-}
+
 
