@@ -54,6 +54,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mostrarRAM.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mostrarRAM.h" />
 		<Unit filename="ramtest.c">
 			<Option compilerVar="CC" />
 		</Unit>

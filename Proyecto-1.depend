@@ -41,7 +41,7 @@
 1443221688 c:\users\christian\nueva\proyecto-1\alu.h
 	<stdint.h>
 
-1444147412 source:c:\users\christian\nueva\proyecto-1\main.c
+1444745192 source:c:\users\christian\nueva\proyecto-1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"registros.h"
@@ -51,13 +51,13 @@
 	"curses.h"
 	"decoder.h"
 
-1442027797 c:\users\christian\nueva\proyecto-1\registros.h
+1444698231 c:\users\christian\nueva\proyecto-1\registros.h
 	<stdint.h>
 
 1443113964 c:\users\christian\nueva\proyecto-1\banderas.h
 	<stdint.h>
 
-1443207589 source:c:\users\christian\nueva\proyecto-1\registros.c
+1444698238 source:c:\users\christian\nueva\proyecto-1\registros.c
 	"registros.h"
 	<stdint.h>
 	"curses.h"
@@ -87,7 +87,7 @@
 	<stdio.h>
 	<wchar.h>
 
-1444418585 source:c:\users\christian\nueva\proyecto-1\decoder.c
+1444418991 source:c:\users\christian\nueva\proyecto-1\decoder.c
 	"decoder.h"
 
 1443713647 c:\users\christian\nueva\proyecto-1\decoder.h
@@ -103,10 +103,15 @@
 	<stdint.h>
 	<stdlib.h>
 
-1444418240 source:c:\users\christian\nueva\proyecto-1\ramtest.c
+1444431285 source:c:\users\christian\nueva\proyecto-1\ramtest.c
 	<stdint.h>
 	<stdlib.h>
 	"ramtest.h"
 
 1444142181 c:\users\christian\nueva\proyecto-1\ramtest.h
+
+1444746907 source:c:\users\christian\nueva\proyecto-1\mostrarram.c
+	"registros.h"
+	<stdint.h>
+	"curses.h"
 
