@@ -14,9 +14,10 @@ int main(void)
 	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
     int ch=0,j=0;
     uint8_t MemRAM[0xff];
+    reg[13]=0x100;
     for(j=0;j<=0xff;j++)
     {
-        MemRAM[j]=j;
+        MemRAM[j]=0xff;
     }
     int num_instructions;
     ins_t read;
@@ -58,7 +59,6 @@ int main(void)
         if (j!=0)
         {
             mostrar_registro(reg);
-            mostrar_ram(MemRAM);
             move(2, 15); printw("%s",instructions[reg[15]-1]);
             move(4, 40); printw("Banderas");
             move(6, 40); printw("N=%d\n",bandera[0]);
@@ -67,8 +67,10 @@ int main(void)
             move(9, 40); printw("V=%d\n",bandera[3]);
             move(11, 40); printw("PC=%X\n",reg[15]*2);
             move(12, 40); printw("LR=%X\n",reg[14]*2);
+            move(13, 40); printw("SP=%X\n",reg[13]);
             move(4, 55); printw("Emulador ARM Cortex-M0");
             move(5, 55); printw("Presione Q para Salir");
+            mostrar_ram(MemRAM);
             border( ACS_VLINE, ACS_VLINE,
                     ACS_HLINE, ACS_HLINE,
                     ACS_ULCORNER, ACS_URCORNER,

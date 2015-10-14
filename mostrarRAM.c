@@ -12,13 +12,12 @@ void mostrar_ram(uint8_t *MemRAM)
         {
             for(k=0;k<4;k++)
             {
-                move(a+(j/4),b);
-                printw("0x%.2X = ",i+j+k );
-                move((a+(j/4)),(b+7+(k*3)));
+                move((a+(j/4)),b);
+                printw("0x%.2X = ",(i+j+k));
+                move((a+(j /4)),(b+7+(k*3)));
                 printw("%.2X",MemRAM[i+j+k]);
             }
         }
 	}
     refresh();
 }
-
