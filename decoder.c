@@ -553,6 +553,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     if (strcmp(instruction.mnemonic,"PUSH")==0)
     {
         registros[15]+=1;
+        registros[13]=MemRAM[0xff];
         PUSH(registros, MemRAM, instruction.registers_list);
     }
     if (strcmp(instruction.mnemonic,"POP")==0)

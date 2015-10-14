@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include "curses.h"
 #include "decoder.h"
+#include "mostrarRAM.h"
 
 int main(void)
 {
@@ -13,9 +14,9 @@ int main(void)
 	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
     int ch=0,j=0;
     uint8_t MemRAM[0xff];
-    for(j=0;j<0xff;j++)
+    for(j=0;j<=0xff;j++)
     {
-        MemRAM[j]=0xff;
+        MemRAM[j]=j;
     }
     int num_instructions;
     ins_t read;
@@ -35,7 +36,6 @@ int main(void)
     init_pair(1, COLOR_WHITE, COLOR_CYAN); 	/* Pair 1 -> Texto blanco fondo cyan */
     bkgd(COLOR_PAIR(1));           //se rellena el todo el fondo de color cyan
 	mostrar_registro(reg);
-    move(2, 15); printw("%s",instructions[reg[15]]);
     move(4, 40); printw("Banderas");
     move(6, 40); printw("N=%d\n",bandera[0]);
     move(7, 40); printw("Z=%d\n",bandera[1]);
@@ -58,7 +58,8 @@ int main(void)
         if (j!=0)
         {
             mostrar_registro(reg);
-            move(2, 15); printw("%s",instructions[reg[15]]);
+            mostrar_ram(MemRAM);
+            move(2, 15); printw("%s",instructions[reg[15]-1]);
             move(4, 40); printw("Banderas");
             move(6, 40); printw("N=%d\n",bandera[0]);
             move(7, 40); printw("Z=%d\n",bandera[1]);
