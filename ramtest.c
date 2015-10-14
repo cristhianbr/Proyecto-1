@@ -31,7 +31,7 @@ void PUSH(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
 
 void POP(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
 {
-    int i,j;
+    int i,j=0;
     uint32_t address;
     for(i=0;i<16;i++)
     {
@@ -45,7 +45,7 @@ void POP(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
     {
         if(Reg[i]==1)
         {
-            regs[i]=(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24);
+            regs[i]=(MemRAM[address]<<24) | (MemRAM[address+1]<<16) | (MemRAM[address+2]<<8) | (MemRAM[address+3]);
         }
         address=address+4;
     }

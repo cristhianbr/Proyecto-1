@@ -115,3 +115,116 @@
 	<stdint.h>
 	"curses.h"
 
+1444835356 source:d:\git\git\carpeta-p\proyecto-1\alu.c
+	"ALU.h"
+	"banderas.h"
+
+1444748246 d:\git\git\carpeta-p\proyecto-1\alu.h
+	<stdint.h>
+
+1444748246 d:\git\git\carpeta-p\proyecto-1\banderas.h
+	<stdint.h>
+
+1444748246 source:d:\git\git\carpeta-p\proyecto-1\banderas.c
+	"banderas.h"
+	<math.h>
+
+1444836808 source:d:\git\git\carpeta-p\proyecto-1\decoder.c
+	"decoder.h"
+
+1444748246 d:\git\git\carpeta-p\proyecto-1\decoder.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<stdint.h>
+
+1444748246 source:d:\git\git\carpeta-p\proyecto-1\instruccionesdesplazamiento.c
+	"InstruccionesDesplazamiento.h"
+	"banderas.h"
+
+1444748246 d:\git\git\carpeta-p\proyecto-1\instruccionesdesplazamiento.h
+	<stdint.h>
+
+1444748246 source:d:\git\git\carpeta-p\proyecto-1\load-store.c
+	<stdint.h>
+	<stdlib.h>
+
+1444838008 source:d:\git\git\carpeta-p\proyecto-1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"registros.h"
+	"ALU.h"
+	"banderas.h"
+	<stdint.h>
+	"curses.h"
+	"decoder.h"
+
+1444748246 d:\git\git\carpeta-p\proyecto-1\registros.h
+	<stdint.h>
+
+1444748246 d:\git\git\carpeta-p\proyecto-1\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+
+1444798247 source:d:\git\git\carpeta-p\proyecto-1\mostrarram.c
+	"registros.h"
+	<stdint.h>
+	"curses.h"
+
+1444837338 source:d:\git\git\carpeta-p\proyecto-1\ramtest.c
+	<stdint.h>
+	<stdlib.h>
+	"ramtest.h"
+
+1444748246 d:\git\git\carpeta-p\proyecto-1\ramtest.h
+
+1444748246 source:d:\git\git\carpeta-p\proyecto-1\registros.c
+	"registros.h"
+	<stdint.h>
+	"curses.h"
+
+1444748246 source:d:\git\git\carpeta-p\proyecto-1\saltos.c
+	"banderas.h"
+
+1341010376 d:\mingw\include\stdint.h
+	<stddef.h>
+
+1341010374 d:\mingw\include\math.h
+	<_mingw.h>
+
+1341010370 d:\mingw\include\_mingw.h
+
+1341010376 d:\mingw\include\stdlib.h
+	<_mingw.h>
+	<stddef.h>
+
+1341010376 d:\mingw\include\stdio.h
+	<_mingw.h>
+	<stddef.h>
+	<stdarg.h>
+	<sys/types.h>
+
+1341010380 d:\mingw\include\sys\types.h
+	<_mingw.h>
+	<stddef.h>
+
+1341010376 d:\mingw\include\string.h
+	<_mingw.h>
+	<stddef.h>
+
+1341010378 d:\mingw\include\wchar.h
+	<_mingw.h>
+	<stddef.h>
+	<stdarg.h>
+	<wctype.h>
+	<sys/types.h>
+	<stdio.h>
+	<stdint.h>
+	<stdint.h>
+
+1341010378 d:\mingw\include\wctype.h
+	<_mingw.h>
+	<stddef.h>
+
