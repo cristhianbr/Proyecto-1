@@ -34,7 +34,13 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="../../../../MinGW/include" />
 		</Compiler>
+		<Linker>
+			<Add library="libpdcurses.a" />
+			<Add directory="../../../../MinGW/bin" />
+			<Add directory="../../../../MinGW/lib" />
+		</Linker>
 		<Unit filename="ALU.c">
 			<Option compilerVar="CC" />
 		</Unit>
