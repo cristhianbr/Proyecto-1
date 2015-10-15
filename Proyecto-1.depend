@@ -129,10 +129,10 @@
 	"banderas.h"
 	<math.h>
 
-1444836808 source:d:\git\git\carpeta-p\proyecto-1\decoder.c
+1444871097 source:d:\git\git\carpeta-p\proyecto-1\decoder.c
 	"decoder.h"
 
-1444748246 d:\git\git\carpeta-p\proyecto-1\decoder.h
+1444860955 d:\git\git\carpeta-p\proyecto-1\decoder.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -149,7 +149,7 @@
 	<stdint.h>
 	<stdlib.h>
 
-1444838008 source:d:\git\git\carpeta-p\proyecto-1\main.c
+1444869162 source:d:\git\git\carpeta-p\proyecto-1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"registros.h"
@@ -173,7 +173,7 @@
 	<stdint.h>
 	"curses.h"
 
-1444837338 source:d:\git\git\carpeta-p\proyecto-1\ramtest.c
+1444871789 source:d:\git\git\carpeta-p\proyecto-1\ramtest.c
 	<stdint.h>
 	<stdlib.h>
 	"ramtest.h"

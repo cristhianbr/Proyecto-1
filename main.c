@@ -12,9 +12,9 @@ int main(void)
     uint32_t reg[16]={0};       //se creo un arreglo de 13 variables de 32 bits para los 13 registros
 	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
     int ch=0,j=0;
+    uint16_t Mnem=0x0;
     uint8_t MemRAM[0xff];
     reg[13]=0x100;
-
     for(j=0;j<=0xff;j++)
     {
         MemRAM[j]=0xff;
@@ -60,6 +60,7 @@ int main(void)
         {
             mostrar_registro(reg);
             move(2, 15); printw("%s",instructions[reg[15]-1]);
+            move(2, 40); printw("Instruccion --> 0x%.4X",Mnem);
             move(4, 40); printw("Banderas");
             move(6, 40); printw("N=%d\n",bandera[0]);
             move(7, 40); printw("Z=%d\n",bandera[1]);
@@ -79,7 +80,7 @@ int main(void)
         }
         j=1;
         instruction = getInstruction(instructions[reg[15]]);
-        decodeInstruction(instruction, reg, bandera, &MemRAM);
+        decodeInstruction(instruction, reg, bandera, MemRAM, Mnem);
     }
     attroff(COLOR_PAIR(1));     	/* DEshabilita los colores Pair 1 */
     endwin();
