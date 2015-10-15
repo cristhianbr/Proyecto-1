@@ -1,23 +1,21 @@
-#ifndef _IO_H_
+/*#ifndef _IO_H_
 #define	_IO_H_
 
 #include <stdint.h>
 #include <curses.h>
-
 #define XINIT 10
 #define YINIT 5
 
-/*===================================================*/
 
 #define HIGH	1
-#define LOW		0	
+#define LOW		0
 
 #define Read	1
 #define Write	0
 
-#define BLUEBLACK	10	/*Text Blue Background Black*/
-#define REDBLACK	20	/*Text Red Background Black*/
-#define WHITEBLACK	30  /*Text White Background White*/
+#define BLUEBLACK	10	//Text Blue Background Black
+#define REDBLACK	20	//Text Red Background Black
+#define WHITEBLACK	30  //Text White Background White
 
 typedef struct{
 	uint8_t DDR;
@@ -34,4 +32,5 @@ void initIO(void);
 void showPorts(void);
 void showFrame(int x,int y,int w,int h);
 
-#endif /*_IO_H_*/
+#endif //_IO_H_
+*/

@@ -1,15 +1,15 @@
-#include "io.h"
+/*#include "io.h"
 
 port_t PORTA;
 port_t PORTB;
-uint8_t irq[16];
+extern uint8_t irq[16];
 
 void initIO(void)
 {
-	initscr();				
-	curs_set(0);			
+	initscr();
+	curs_set(0);
 	start_color();
-		
+
 	init_pair(BLUEBLACK, COLOR_BLUE, COLOR_BLACK);
 	init_pair(REDBLACK, COLOR_RED, COLOR_BLACK);
 	init_pair(WHITEBLACK, COLOR_WHITE, COLOR_BLACK);
@@ -23,18 +23,18 @@ void initIO(void)
 
 void changePinPortA(uint8_t pin, uint8_t value)
 {
-	if( ( (PORTA.Pins & (1<<pin)) != (value<<pin) ) && 
+	if( ( (PORTA.Pins & (1<<pin)) != (value<<pin) ) &&
 		( PORTA.Interrupts & (1<<pin) ) )
 		irq[pin] = 1;
-		
+
 	PORTA.Pins = (PORTA.Pins & ~(1<<pin)) | value<<pin;
 }
 
 void changePinPortB(uint8_t pin, uint8_t value)
 {
-	if( ( (PORTB.Pins & (1<<pin)) != (value<<pin) ) && 
+	if( ( (PORTB.Pins & (1<<pin)) != (value<<pin) ) &&
 		( PORTB.Interrupts & (1<<pin) ) )
-		irq[pin+8] = 1;		
+		irq[pin+8] = 1;
 
 	PORTB.Pins = (PORTB.Pins & ~(1<<pin)) | value<<pin;
 }
@@ -76,11 +76,11 @@ void IOAccess(uint8_t address, uint8_t* data, uint8_t r_w)
 			case 0:
 				PORTA.DDR = *data;
 				break;
-			case 1:				
+			case 1:
 				PORTA.PORT = *data;
 				PORTA.Pins |= PORTA.PORT&PORTA.DDR;
 				break;
-			case 3:				
+			case 3:
 				PORTA.Interrupts = *data&(~PORTA.DDR);
 				break;
 			case 10:
@@ -90,7 +90,7 @@ void IOAccess(uint8_t address, uint8_t* data, uint8_t r_w)
 				PORTB.PORT = *data;
 				PORTB.Pins |= PORTB.PORT&PORTB.DDR;
 				break;
-			case 13:				
+			case 13:
 				PORTB.Interrupts = *data&(~PORTB.DDR);
 				break;
 		}
@@ -101,7 +101,7 @@ void showPorts(void)
 {
 	int i,j;
 	int x=XINIT, y=YINIT;
-	
+
 	uint8_t *PA = (void*)(&PORTA);
 	uint8_t *PB = (void*)(&PORTB);
 
@@ -109,7 +109,7 @@ void showPorts(void)
 	showFrame(x+30,y,23,9);
 	showFrame(x,y+9,23,3);
 	showFrame(x+30,y+9,23,3);
-	
+
 	attron(COLOR_PAIR(WHITEBLACK));
 
 	mvprintw(y+1, x+8, "7 6 5 4 3 2 1 0 ");
@@ -117,15 +117,15 @@ void showPorts(void)
 	mvprintw(y+5, x+2, "PORTA ");
 	mvprintw(y+7, x+2, " PINA ");
 	mvprintw(y+10, x+2, "Pins ");
-	
+
 	mvprintw(y+1, x+38, "7 6 5 4 3 2 1 0 ");
 	mvprintw(y+3, x+32, " DDRB ");
 	mvprintw(y+5, x+32, "PORTB ");
 	mvprintw(y+7, x+32, " PINB ");
 	mvprintw(y+10, x+32, "Pins ");
-	
+
 	for(i=0; i<8; i++)
-	{	
+	{
 		for(j=0; j<4; j++)
 		{
 			if(j==3)
@@ -136,11 +136,11 @@ void showPorts(void)
 			{
 				attron(COLOR_PAIR(REDBLACK));
 				addch(ACS_CKBOARD);
-				attroff(COLOR_PAIR(REDBLACK));			
+				attroff(COLOR_PAIR(REDBLACK));
 			}else{
 				attron(COLOR_PAIR(BLUEBLACK));
 				addch(ACS_CKBOARD);
-				attroff(COLOR_PAIR(BLUEBLACK));			
+				attroff(COLOR_PAIR(BLUEBLACK));
 			}
 		}
 
@@ -154,29 +154,29 @@ void showPorts(void)
 			{
 				attron(COLOR_PAIR(REDBLACK));
 				addch(ACS_CKBOARD);
-				attroff(COLOR_PAIR(REDBLACK));			
+				attroff(COLOR_PAIR(REDBLACK));
 			}else{
 				attron(COLOR_PAIR(BLUEBLACK));
 				addch(ACS_CKBOARD);
-				attroff(COLOR_PAIR(BLUEBLACK));			
+				attroff(COLOR_PAIR(BLUEBLACK));
 			}
 		}
 	}
-	
+
 	attroff(COLOR_PAIR(WHITEBLACK));
 	refresh();
 }
 
 
 void showFrame(int x,int y,int w,int h)
-{	
+{
 	int i,a;
- 	
+
 	attron(COLOR_PAIR(WHITEBLACK));
- 
+
 	move(y,x);
 	for(a=0;a<h;a++){
- 
+
     	move(y+a,x);
 	    if(a==0){
 	        addch(ACS_ULCORNER);
@@ -189,18 +189,18 @@ void showFrame(int x,int y,int w,int h)
 	            if(a==0 || a==h-1) {
 	                addch(ACS_HLINE);
 	            }else{
-	                printw(" ");  
+	                printw(" ");
 	            }
 	        }
 	    if(a==0){
-	        addch(ACS_URCORNER); 
+	        addch(ACS_URCORNER);
 	    }else if(a==h-1){
-	        addch(ACS_LRCORNER); 
+	        addch(ACS_LRCORNER);
 	    }else{
 	        addch(ACS_VLINE);
 	    }
- 
+
 	}
 	attroff(COLOR_PAIR(WHITEBLACK));
 	refresh();
-}
+}*/

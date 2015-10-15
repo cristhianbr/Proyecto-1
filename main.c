@@ -7,11 +7,14 @@
 #include "curses.h"
 #include "decoder.h"
 #include "mostrarRAM.h"
+#include "io.h"
+
+uint8_t irq[16];
 
 int main(void)
 {
     uint32_t reg[16]={0};       //se creo un arreglo de 13 variables de 32 bits para los 13 registros
-	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
+	char bandera[4]={0},m;        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
     int ch=0,j=0;
     uint8_t MemRAM[0xff];
     reg[13]=0x100;
@@ -56,6 +59,11 @@ int main(void)
     {
         ch = getch();            /* Espera entrada del usuario */
         clear();
+        if(irq[reg[15]]==1)
+        {
+            m=1;
+            PUSH_INT(reg,MemRAM,bandera);
+        }
         if (j!=0)
         {
             mostrar_registro(reg);
