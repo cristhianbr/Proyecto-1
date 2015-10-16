@@ -1,4 +1,4 @@
-/*#ifndef _IO_H_
+#ifndef _IO_H_
 #define	_IO_H_
 
 #include <stdint.h>
@@ -33,4 +33,4 @@ void showPorts(void);
 void showFrame(int x,int y,int w,int h);
 
 #endif //_IO_H_
-*/
+

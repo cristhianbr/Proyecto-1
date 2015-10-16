@@ -1,4 +1,4 @@
-/*#include "io.h"
+#include "io.h"
 
 port_t PORTA;
 port_t PORTB;
@@ -6,10 +6,6 @@ extern uint8_t irq[16];
 
 void initIO(void)
 {
-	initscr();
-	curs_set(0);
-	start_color();
-
 	init_pair(BLUEBLACK, COLOR_BLUE, COLOR_BLACK);
 	init_pair(REDBLACK, COLOR_RED, COLOR_BLACK);
 	init_pair(WHITEBLACK, COLOR_WHITE, COLOR_BLACK);
@@ -203,4 +199,4 @@ void showFrame(int x,int y,int w,int h)
 	}
 	attroff(COLOR_PAIR(WHITEBLACK));
 	refresh();
-}*/
+}

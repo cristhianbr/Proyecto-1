@@ -1,6 +1,6 @@
 #include "decoder.h"
 
-void decodeInstruction(instruction_t instruction, uint32_t *registros, char *flag, uint8_t *MemRAM)
+void decodeInstruction(instruction_t instruction, uint32_t *registros, char *flag, uint8_t *MemRAM, uint16_t *Mnem)
 {
     // instruction.op1_value --> Valor primer operando
     // instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
@@ -611,18 +611,18 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
                     LDRB(registros[instruction.op1_value],(registros[instruction.op2_value]&0xFF),imm32,MemRAM);
                 }
                 else if(suma>=0x40000000){
-                    IOAccess(suma&0xFF, &registros[instruction.op1_value], Read);
+                    IOAccess(suma&0xFF, &registros[instruction.op1_value], 'Read');
             }
         }
     }
          if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
         {
             suma=registros[instruction.op2_value]+registros[instruction.op3_value];
-            if((suma>=0x20000000)&&(suma<=0x200000FF){
+            if((suma>=0x20000000)&&(suma<=0x200000FF)){
                 LDRB(registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
             }
             else if(suma>=0x40000000){
-                    IOAccess(suma&0xFF, &registros[instruction.op1_value], Read);
+                    IOAccess(suma&0xFF, &registros[instruction.op1_value], 'Read');
             }
         }
     }
@@ -691,12 +691,12 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             {
                 imm32=(uint32_t)(instruction.op3_value<<2);
                 suma=registros[instruction.op2_value]+imm32;
-                if((suma>=0x20000000)&&(suma<=0x200000FF){
+                if((suma>=0x20000000)&&(suma<=0x200000FF)){
                     STRB(registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
                 }
                 else if(suma>=0x40000000){
-                    IOAccess(suma&0xFF, &registros[instruction.op1_value], write);
-            }
+                    IOAccess(suma&0xFF, &registros[instruction.op1_value], 'write');
+                }
 
             }
         }
@@ -704,11 +704,11 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
          if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
         {
             suma=registros[instruction.op2_value]+registros[instruction.op3_value];
-                if((suma>=0x20000000)&&(suma<=0x200000FF){
-                    STRB(registros[instruction.op1_value],registros[instruction.op2_value&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
+                if((suma>=0x20000000)&&(suma<=0x200000FF)){
+                    STRB(registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
                 }
                 else if(suma>=0x40000000){
-                    IOAccess(suma&0xFF, &registros[instruction.op1_value], write);
+                    IOAccess(suma&0xFF, &registros[instruction.op1_value], 'write');
             }
 
         }
