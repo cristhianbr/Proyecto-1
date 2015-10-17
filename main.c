@@ -9,15 +9,15 @@
 #include "mostrarRAM.h"
 #include "io.h"
 
-uint8_t irq[16];
+extern uint8_t irq[16];
 
 int main(void)
 {
     uint32_t reg[16]={0};       //se creo un arreglo de 13 variables de 32 bits para los 13 registros
-	char bandera[4]={0},m;        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
+	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
     int ch=0,j=0;
     uint16_t Mnem=0x0;
-    uint8_t MemRAM[0xff];
+    uint8_t MemRAM[256],m=0;;
     reg[13]=0x100;
     for(j=0;j<=0xff;j++)
     {
@@ -48,48 +48,44 @@ int main(void)
     move(9, 40); printw("V=%d\n",bandera[3]);
     move(11, 40); printw("PC=%X\n",reg[15]*2);
     move(12, 40); printw("LR=%X\n",reg[14]*2);
+    move(13, 40); printw("SP=%X\n",reg[13]);
     move(4, 55); printw("Emulador ARM Cortex-M0");
     mostrar_ram(MemRAM);
+    initIO();showPorts();
     border( ACS_VLINE, ACS_VLINE,
             ACS_HLINE, ACS_HLINE,
             ACS_ULCORNER, ACS_URCORNER,
             ACS_LLCORNER, ACS_LRCORNER	);
     refresh();
-    j=0;
 	while(ch != 'q')
     {
         ch = getch();            /* Espera entrada del usuario */
         clear();
-        if(irq[reg[15]]==1)
-        {
-            m=1;
-            PUSH_INT(reg,MemRAM,bandera);
-        }
-        if (j!=0)
-        {
-            mostrar_registro(reg);
-            move(2, 15); printw("%s",instructions[reg[15]-1]);
-            move(2, 40); printw("Instruccion --> 0x%.4X",Mnem);
-            move(4, 40); printw("Banderas");
-            move(6, 40); printw("N=%d\n",bandera[0]);
-            move(7, 40); printw("Z=%d\n",bandera[1]);
-            move(8, 40); printw("C=%d\n",bandera[2]);
-            move(9, 40); printw("V=%d\n",bandera[3]);
-            move(11, 40); printw("PC=%X\n",reg[15]*2);
-            move(12, 40); printw("LR=%X\n",reg[14]*2);
-            move(13, 40); printw("SP=%X\n",reg[13]);
-            move(4, 55); printw("Emulador ARM Cortex-M0");
-            move(5, 55); printw("Presione Q para Salir");
-            mostrar_ram(MemRAM);
-            border( ACS_VLINE, ACS_VLINE,
-                    ACS_HLINE, ACS_HLINE,
-                    ACS_ULCORNER, ACS_URCORNER,
-                    ACS_LLCORNER, ACS_LRCORNER	);
-            refresh();	            /* Imprime en la pantalla Sin esto el printw no es mostrado */
-        }
-        j=1;
         instruction = getInstruction(instructions[reg[15]]);
-        decodeInstruction(instruction, reg, bandera, MemRAM, Mnem);
+        decodeInstruction(instruction, reg, bandera, MemRAM, &Mnem);
+        mostrar_registro(reg);
+        move(2, 15); printw("%s",instructions[reg[15]-1]);
+        move(2, 40); printw("Instruccion --> 0x%.4X",Mnem);
+        move(4, 40); printw("Banderas");
+        move(6, 40); printw("N=%d\n",bandera[0]);
+        move(7, 40); printw("Z=%d\n",bandera[1]);
+        move(8, 40); printw("C=%d\n",bandera[2]);
+        move(9, 40); printw("V=%d\n",bandera[3]);
+        move(11, 40); printw("PC=%X\n",reg[15]*2);
+        move(12, 40); printw("LR=%X\n",reg[14]*2);
+        move(13, 40); printw("SP=%X\n",reg[13]);
+        move(4, 55); printw("Emulador ARM Cortex-M0");
+        move(5, 55); printw("Presione Q para Salir");
+        mostrar_ram(MemRAM);
+        initIO();showPorts();
+        border( ACS_VLINE, ACS_VLINE,
+                ACS_HLINE, ACS_HLINE,
+                ACS_ULCORNER, ACS_URCORNER,
+                ACS_LLCORNER, ACS_LRCORNER	);
+        refresh();	            /* Imprime en la pantalla Sin esto el printw no es mostrado */
+        instruction = getInstruction(instructions[reg[15]]);
+        decodeInstruction(instruction, reg, bandera, MemRAM, &Mnem);
+        INT(irq, reg, MemRAM, bandera, &m);
     }
     attroff(COLOR_PAIR(1));     	/* DEshabilita los colores Pair 1 */
     endwin();

@@ -45,6 +45,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ALU.h" />
+		<Unit filename="INT.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="INT.h" />
 		<Unit filename="InstruccionesDesplazamiento.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -72,9 +76,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="mostrarRAM.h" />
-		<Unit filename="ports.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="ramtest.c">
 			<Option compilerVar="CC" />
 		</Unit>

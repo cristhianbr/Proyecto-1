@@ -11,7 +11,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         if((instruction.op3_type=='N')&&(instruction.op2_type=='R')) // Si en el operando 3 no tengo nada y el operando 2 es un reguistro
         {
             registros[15]+=1;
-            *Mnem=(68<<8)|(instruction.op1_value)|(instruction.op2_value<<3);
+            *Mnem=((68<<8)|(instruction.op1_value)|(instruction.op2_value<<3));
             ADDS(&registros[instruction.op1_value],registros[instruction.op1_value],registros[instruction.op2_value],flag);
         }
         if((instruction.op3_type=='N')&&(instruction.op2_type=='#')) // Si en el operando 3 no hay nada y el operando 2 es un inmediato
@@ -272,7 +272,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     }
     if(strcmp(instruction.mnemonic,"NOP")==0)
     {
-
+        registros[15]+=1;
     }
     if(strcmp(instruction.mnemonic,"MVNS")==0)
     {

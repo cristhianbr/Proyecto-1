@@ -1,10 +1,10 @@
-/*#ifndef _IO_H_
+#ifndef _IO_H_
 #define	_IO_H_
 
 #include <stdint.h>
 #include <curses.h>
-#define XINIT 10
-#define YINIT 5
+#define XINIT 25
+#define YINIT 40
 
 
 #define HIGH	1
@@ -33,4 +33,3 @@ void showPorts(void);
 void showFrame(int x,int y,int w,int h);
 
 #endif //_IO_H_
-*/
