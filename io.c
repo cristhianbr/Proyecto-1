@@ -44,6 +44,7 @@ void IOAccess(uint8_t address, uint8_t* data, uint8_t r_w)
 				*data = PORTA.DDR;
 				break;
 			case 1:
+				//PORTA.Pins=(PORTA&(~PORTA.DDR))|(PORTA.PORT&PORTA.DDR);
 				*data = PORTA.PORT;
 				break;
 			case 2:

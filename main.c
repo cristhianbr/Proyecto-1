@@ -75,7 +75,7 @@ int main(void)
         move(12, 40); printw("LR=%X\n",reg[14]*2);
         move(13, 40); printw("SP=%X\n",reg[13]);
         move(4, 55); printw("Emulador ARM Cortex-M0");
-        move(5, 55); printw("Presione Q para Salir");
+        move(5, 55); printw("Presione q para Salir");
         mostrar_ram(MemRAM);
         initIO();showPorts();
         border( ACS_VLINE, ACS_VLINE,
