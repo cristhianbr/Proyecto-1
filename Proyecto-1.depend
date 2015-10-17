@@ -379,3 +379,96 @@
 1445023425 source:c:\users\luis eduardo\desktop\proyecto-1\saltos.c
 	"banderas.h"
 
+1445102349 source:d:\git\git\carpetapro\proyecto-1\alu.c
+	"ALU.h"
+	"banderas.h"
+
+1445102349 d:\git\git\carpetapro\proyecto-1\alu.h
+	<stdint.h>
+
+1445102349 d:\git\git\carpetapro\proyecto-1\banderas.h
+	<stdint.h>
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\banderas.c
+	"banderas.h"
+	<math.h>
+
+1445105923 source:d:\git\git\carpetapro\proyecto-1\decoder.c
+	"decoder.h"
+
+1445098874 d:\git\git\carpetapro\proyecto-1\decoder.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<stdint.h>
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\instruccionesdesplazamiento.c
+	"InstruccionesDesplazamiento.h"
+	"banderas.h"
+
+1445102349 d:\git\git\carpetapro\proyecto-1\instruccionesdesplazamiento.h
+	<stdint.h>
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\io.c
+	"io.h"
+
+1445102349 d:\git\git\carpetapro\proyecto-1\io.h
+	<stdint.h>
+	<curses.h>
+
+1276242500 d:\mingw\include\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\load-store.c
+	<stdint.h>
+	<stdlib.h>
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"registros.h"
+	"ALU.h"
+	"banderas.h"
+	<stdint.h>
+	"curses.h"
+	"decoder.h"
+	"mostrarRAM.h"
+	"io.h"
+
+1445102349 d:\git\git\carpetapro\proyecto-1\registros.h
+	<stdint.h>
+
+1445102349 d:\git\git\carpetapro\proyecto-1\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+
+1445116937 d:\git\git\carpetapro\proyecto-1\mostrarram.h
+	<stdint.h>
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\mostrarram.c
+	"mostrarRAM.h"
+	<stdint.h>
+	"curses.h"
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\ports.c
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\ramtest.c
+	<stdint.h>
+	<stdlib.h>
+	"ramtest.h"
+
+1445102349 d:\git\git\carpetapro\proyecto-1\ramtest.h
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\registros.c
+	"registros.h"
+	<stdint.h>
+	"curses.h"
+
+1445102349 source:d:\git\git\carpetapro\proyecto-1\saltos.c
+	"banderas.h"
+

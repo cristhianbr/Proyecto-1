@@ -1,3 +1,4 @@
+#include <stdint.h>
 /**
 *\brief Funcion para mostrar la memoria Ram.
 *\param *MemRAM Puntero con la direccion de la memoria Ram.
