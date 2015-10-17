@@ -355,8 +355,7 @@
 	<stdio.h>
 	<wchar.h>
 
-1445023425 c:\users\luis eduardo\desktop\proyecto-1\mostrarram.h
-	<stdint.h>
+1445050215 c:\users\luis eduardo\desktop\proyecto-1\mostrarram.h
 
 1445023425 source:c:\users\luis eduardo\desktop\proyecto-1\mostrarram.c
 	"mostrarRAM.h"
@@ -370,7 +369,7 @@
 	<stdlib.h>
 	"ramtest.h"
 
-1445023425 c:\users\luis eduardo\desktop\proyecto-1\ramtest.h
+1445048338 c:\users\luis eduardo\desktop\proyecto-1\ramtest.h
 
 1445023425 source:c:\users\luis eduardo\desktop\proyecto-1\registros.c
 	"registros.h"
