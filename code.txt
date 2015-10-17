@@ -2,7 +2,7 @@ B #3
 B #14
 B #17
 MOVS R1,#0
-ADDS R2,R1,#0xff
+STR R1,[R1,#0]
 MOV R0,#0
 MOV R1,#4
 MOV R2,#4

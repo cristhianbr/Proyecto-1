@@ -5,6 +5,9 @@
 #include <string.h>
 #include <stdint.h>
 
+#define Read	1
+#define Write	0
+
 
 typedef struct
 {

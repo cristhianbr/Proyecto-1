@@ -89,10 +89,10 @@
 	<stdio.h>
 	<wchar.h>
 
-1445099153 source:c:\users\christian\nueva\proyecto-1\decoder.c
+1445110912 source:c:\users\christian\nueva\proyecto-1\decoder.c
 	"decoder.h"
 
-1444876674 c:\users\christian\nueva\proyecto-1\decoder.h
+1445110479 c:\users\christian\nueva\proyecto-1\decoder.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -110,17 +110,17 @@
 	<stdlib.h>
 	"ramtest.h"
 
-1444870246 c:\users\christian\nueva\proyecto-1\ramtest.h
+1445106217 c:\users\christian\nueva\proyecto-1\ramtest.h
 
-1444842656 source:c:\users\christian\nueva\proyecto-1\mostrarram.c
-	"mostrarRAM.h"
+1445106378 source:c:\users\christian\nueva\proyecto-1\mostrarram.c
 	<stdint.h>
+	<stdlib.h>
 	"curses.h"
+	"mostrarRAM.h"
 
 1276242500 D
 
-1444749565 c:\users\christian\nueva\proyecto-1\mostrarram.h
-	<stdint.h>
+1445106217 c:\users\christian\nueva\proyecto-1\mostrarram.h
 
 1444749565 
 
@@ -243,7 +243,7 @@
 	"io.h"
 	"curses.h"
 
-1445101350 source:c:\users\christian\nueva\proyecto-1\io.c
+1445108583 source:c:\users\christian\nueva\proyecto-1\io.c
 	"io.h"
 	"curses.h"
 
@@ -366,8 +366,7 @@
 	<stdio.h>
 	<wchar.h>
 
-1445023425 c:\users\luis eduardo\desktop\proyecto-1\mostrarram.h
-	<stdint.h>
+1445050215 c:\users\luis eduardo\desktop\proyecto-1\mostrarram.h
 
 1445023425 source:c:\users\luis eduardo\desktop\proyecto-1\mostrarram.c
 	"mostrarRAM.h"
@@ -381,7 +380,7 @@
 	<stdlib.h>
 	"ramtest.h"
 
-1445023425 c:\users\luis eduardo\desktop\proyecto-1\ramtest.h
+1445048338 c:\users\luis eduardo\desktop\proyecto-1\ramtest.h
 
 1445023425 source:c:\users\luis eduardo\desktop\proyecto-1\registros.c
 	"registros.h"
