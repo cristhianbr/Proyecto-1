@@ -34,14 +34,14 @@
 
 1440734468 c:\users\christian\proyecto-1\banderas.h
 
-1443709495 source:c:\users\christian\nueva\proyecto-1\alu.c
+1445127407 source:c:\users\christian\nueva\proyecto-1\alu.c
 	"ALU.h"
 	"banderas.h"
 
 1443221688 c:\users\christian\nueva\proyecto-1\alu.h
 	<stdint.h>
 
-1445099855 source:c:\users\christian\nueva\proyecto-1\main.c
+1445145385 source:c:\users\christian\nueva\proyecto-1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"registros.h"
@@ -89,7 +89,7 @@
 	<stdio.h>
 	<wchar.h>
 
-1445110912 source:c:\users\christian\nueva\proyecto-1\decoder.c
+1445144832 source:c:\users\christian\nueva\proyecto-1\decoder.c
 	"decoder.h"
 
 1445110479 c:\users\christian\nueva\proyecto-1\decoder.h
@@ -297,7 +297,7 @@
 	<stdio.h>
 	<wchar.h>
 
-1445038640 source:c:\users\christian\nueva\proyecto-1\int.c
+1445127732 source:c:\users\christian\nueva\proyecto-1\int.c
 	<stdint.h>
 	<stdlib.h>
 	"INT.h"
