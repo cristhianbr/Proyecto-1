@@ -1,6 +1,7 @@
-#include "mostrarRAM.h"
 #include <stdint.h>
+#include <stdlib.h>
 #include "curses.h"
+#include "mostrarRAM.h"
 
 void mostrar_ram(uint8_t *MemRAM)
 {

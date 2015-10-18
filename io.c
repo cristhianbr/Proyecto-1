@@ -1,14 +1,15 @@
 #include "io.h"
+#include "curses.h"
 
 port_t PORTA;
 port_t PORTB;
-extern uint8_t irq[16];
+uint8_t irq[16];
 
 void initIO(void)
 {
 	init_pair(BLUEBLACK, COLOR_BLUE, COLOR_BLACK);
 	init_pair(REDBLACK, COLOR_RED, COLOR_BLACK);
-	init_pair(WHITEBLACK, COLOR_WHITE, COLOR_BLACK);
+	init_pair(WHITEBLACK, COLOR_WHITE, COLOR_CYAN);
 
 	PORTA.DDR = PORTB.DDR = 0;
 	PORTA.PORT = PORTB.PORT = 0;

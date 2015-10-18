@@ -41,7 +41,7 @@
 1443221688 c:\users\christian\nueva\proyecto-1\alu.h
 	<stdint.h>
 
-1444876730 source:c:\users\christian\nueva\proyecto-1\main.c
+1445099855 source:c:\users\christian\nueva\proyecto-1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"registros.h"
@@ -89,10 +89,10 @@
 	<stdio.h>
 	<wchar.h>
 
-1444876674 source:c:\users\christian\nueva\proyecto-1\decoder.c
+1445110912 source:c:\users\christian\nueva\proyecto-1\decoder.c
 	"decoder.h"
 
-1444876674 c:\users\christian\nueva\proyecto-1\decoder.h
+1445110479 c:\users\christian\nueva\proyecto-1\decoder.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -105,22 +105,22 @@
 	<stdint.h>
 	<stdlib.h>
 
-1444845510 source:c:\users\christian\nueva\proyecto-1\ramtest.c
+1444876802 source:c:\users\christian\nueva\proyecto-1\ramtest.c
 	<stdint.h>
 	<stdlib.h>
 	"ramtest.h"
 
-1444142181 c:\users\christian\nueva\proyecto-1\ramtest.h
+1445106217 c:\users\christian\nueva\proyecto-1\ramtest.h
 
-1444842656 source:c:\users\christian\nueva\proyecto-1\mostrarram.c
-	"mostrarRAM.h"
+1445106378 source:c:\users\christian\nueva\proyecto-1\mostrarram.c
 	<stdint.h>
+	<stdlib.h>
 	"curses.h"
+	"mostrarRAM.h"
 
-1444791538 D
+1445023425 D
 
-1444749565 c:\users\christian\nueva\proyecto-1\mostrarram.h
-	<stdint.h>
+1445106217 c:\users\christian\nueva\proyecto-1\mostrarram.h
 
 1444749565 
 
@@ -239,11 +239,15 @@
 
 1341010378 90845b6e6a14a7de8d32b186c50a61f7acdeb
 
-1444868802 source:c:\users\christian\nueva\proyecto-1\ports.c
+1444926604 source:c:\users\christian\nueva\proyecto-1\ports.c
+	"io.h"
+	"curses.h"
 
-1444869237 source:c:\users\christian\nueva\proyecto-1\io.c
+1445108583 source:c:\users\christian\nueva\proyecto-1\io.c
+	"io.h"
+	"curses.h"
 
-1444868878 c:\users\christian\nueva\proyecto-1\io.h
+1445099172 c:\users\christian\nueva\proyecto-1\io.h
 	<stdint.h>
 	<curses.h>
 
@@ -287,11 +291,18 @@
 	<_mingw.h>
 	<stddef.h>
 
-1276242500 c:\mingw\include\curses.h
+1276242499 c:\mingw\include\curses.h
 	<stdarg.h>
 	<stddef.h>
 	<stdio.h>
 	<wchar.h>
+
+1445038640 source:c:\users\christian\nueva\proyecto-1\int.c
+	<stdint.h>
+	<stdlib.h>
+	"INT.h"
+
+1445034500 c:\users\christian\nueva\proyecto-1\int.h
 
 1445023425 source:c:\users\luis eduardo\desktop\proyecto-1\alu.c
 	"ALU.h"
@@ -379,7 +390,7 @@
 1445023425 source:c:\users\luis eduardo\desktop\proyecto-1\saltos.c
 	"banderas.h"
 
-1445102349 source:d:\git\git\carpetapro\proyecto-1\alu.c
+1445126707 source:d:\git\git\carpetapro\proyecto-1\alu.c
 	"ALU.h"
 	"banderas.h"
 
@@ -389,14 +400,14 @@
 1445102349 d:\git\git\carpetapro\proyecto-1\banderas.h
 	<stdint.h>
 
-1445102349 source:d:\git\git\carpetapro\proyecto-1\banderas.c
+1445126602 source:d:\git\git\carpetapro\proyecto-1\banderas.c
 	"banderas.h"
 	<math.h>
 
-1445105923 source:d:\git\git\carpetapro\proyecto-1\decoder.c
+1445122466 source:d:\git\git\carpetapro\proyecto-1\decoder.c
 	"decoder.h"
 
-1445098874 d:\git\git\carpetapro\proyecto-1\decoder.h
+1445118472 d:\git\git\carpetapro\proyecto-1\decoder.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -409,10 +420,11 @@
 1445102349 d:\git\git\carpetapro\proyecto-1\instruccionesdesplazamiento.h
 	<stdint.h>
 
-1445102349 source:d:\git\git\carpetapro\proyecto-1\io.c
+1445118472 source:d:\git\git\carpetapro\proyecto-1\io.c
 	"io.h"
+	"curses.h"
 
-1445102349 d:\git\git\carpetapro\proyecto-1\io.h
+1445118472 d:\git\git\carpetapro\proyecto-1\io.h
 	<stdint.h>
 	<curses.h>
 
@@ -426,7 +438,7 @@
 	<stdint.h>
 	<stdlib.h>
 
-1445102349 source:d:\git\git\carpetapro\proyecto-1\main.c
+1445118472 source:d:\git\git\carpetapro\proyecto-1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"registros.h"
@@ -450,10 +462,11 @@
 1445116937 d:\git\git\carpetapro\proyecto-1\mostrarram.h
 	<stdint.h>
 
-1445102349 source:d:\git\git\carpetapro\proyecto-1\mostrarram.c
-	"mostrarRAM.h"
+1445118472 source:d:\git\git\carpetapro\proyecto-1\mostrarram.c
 	<stdint.h>
+	<stdlib.h>
 	"curses.h"
+	"mostrarRAM.h"
 
 1445102349 source:d:\git\git\carpetapro\proyecto-1\ports.c
 
@@ -471,4 +484,17 @@
 
 1445102349 source:d:\git\git\carpetapro\proyecto-1\saltos.c
 	"banderas.h"
+
+1445102349 h"
+
+1445023425 fe6ddef09102d99573641fe1a2b10fbf887e9
+
+1445023425 8a23bb5f670dd6e3418de9a2d29aa9dd1258b
+
+1445118472 source:d:\git\git\carpetapro\proyecto-1\int.c
+	<stdint.h>
+	<stdlib.h>
+	"INT.h"
+
+1445118472 d:\git\git\carpetapro\proyecto-1\int.h
 

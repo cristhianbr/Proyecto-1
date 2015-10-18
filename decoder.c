@@ -281,6 +281,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     }
     if(strcmp(instruction.mnemonic,"NOP")==0)
     {
+        registros[15]+=1;
         *Mnem=-16640;
     }
     if(strcmp(instruction.mnemonic,"MVNS")==0)
@@ -447,7 +448,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
 
     if(strcmp(instruction.mnemonic,"B")==0)
     {
-        *Mnem=(13<<12)/*(<<8)*/|(instruction.op1_value);
+        *Mnem=(28<<11)|(instruction.op1_value);
         B(&registros[15],instruction.op1_value);
     }
 
@@ -571,7 +572,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         }
         else
         {
-             *Mnem=(143<<7)|(instruction.op1_value<<3);
+            *Mnem=(143<<7)|(instruction.op1_value<<3);
             BLX(&registros[15],&registros[14],registros[instruction.op1_value]);
         }
     }
@@ -612,7 +613,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     }
     if (strcmp(instruction.mnemonic,"POP")==0)
     {
-         int i;int16_t aux;
+        int i;int16_t aux;
         for(i=0;i<=15;i++)
         {
             aux=(instruction.registers_list[i]<<i);
@@ -624,27 +625,22 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
 
     if(strcmp(instruction.mnemonic,"LDR")==0)
     {
-
-    {
-        registros[15]+=1;
         if((instruction.op3_type=='#')&&(instruction.op2_type=='R')&&(instruction.op2_value==13))
         {
             if(instruction.op3_value<256)
             {
                 registros[15]+=1;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                LDR(registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
-                }
+                LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
             }
         }
-
         if((instruction.op3_type=='#')&&(instruction.op2_type=='R')&&(instruction.op2_value==15))
         {
             if(instruction.op3_value<256)
             {
                 registros[15]+=1;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                LDR(registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
+                LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
             }
         }
         if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
@@ -653,14 +649,14 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             {
                 registros[15]+=1;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                LDR(registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
+                LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
             }
         }
         if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
         {
             registros[15]+=1;
             *Mnem=(44<<9)|(instruction.op1_value)|(instruction.op2_value<<3)|(instruction.op3_value<<6);
-            LDR(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            LDR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
         }
     }
 
@@ -669,32 +665,35 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         uint32_t suma;
         if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
         {
-
             if(instruction.op3_value<32)
             {
                 *Mnem=(15<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
                 registros[15]+=1;
                 imm32=(uint32_t)(instruction.op3_value<<2);
                 suma=registros[instruction.op2_value]+imm32;
-                if((suma>=0x20000000)&&(suma<=0x200000FF)){
-                    LDRB(registros[instruction.op1_value],(registros[instruction.op2_value]&0xFF),imm32,MemRAM);
+                if((suma>=0x20000000)&&(suma<=0x200000FF))
+                {
+                    LDRB(&registros[instruction.op1_value],(registros[instruction.op2_value]&0xFF),imm32,MemRAM);
                 }
-                else if(suma>=0x40000000){
-                    IOAccess(suma&0xFF, &registros[instruction.op1_value], 'Read');
+                if(suma>=0x40000000)
+                {
+                    IOAccess(suma&0xFF,&registros[instruction.op1_value],Read);
+                }
             }
         }
-    }
-         if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
         {
             registros[15]+=1;
             *Mnem=(46<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            LDR(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            LDR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
             suma=registros[instruction.op2_value]+registros[instruction.op3_value];
-            if((suma>=0x20000000)&&(suma<=0x200000FF)){
-                LDRB(registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
+            if((suma>=0x20000000)&&(suma<=0x200000FF))
+            {
+                LDRB(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
             }
-            else if(suma>=0x40000000){
-                    IOAccess(suma&0xFF, &registros[instruction.op1_value], 'Read');
+            if(suma>=0x40000000)
+            {
+                    IOAccess(suma&0xFF, &registros[instruction.op1_value],Read);
             }
         }
     }
@@ -707,14 +706,14 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
                 *Mnem=(17<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
                 registros[15]+=1;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                LDRH(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+                LDRH(&registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
             }
         }
          if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
         {
             registros[15]+=1;
             *Mnem=(45<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            LDRH(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            LDRH(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
         }
 
     }
@@ -725,7 +724,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         {
             registros[15]+=1;
             *Mnem=(43<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            LDRSB(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            LDRSB(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
 
         }
     }
@@ -736,40 +735,37 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         {
             registros[15]+=1;
             *Mnem=(47<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            LDRSH(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            LDRSH(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
         }
     }
 
     if(strcmp(instruction.mnemonic,"STR")==0)
     {
-         if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
         {
             if(instruction.op3_value<32)
             {
                 registros[15]+=1;
                 *Mnem=(12<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                STR(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+                STR(&registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
             }
         }
-
         if(instruction.op3_value<256)
-            {
-                registros[15]+=1;
-                *Mnem=(18<<11)|(instruction.op1_value)<<8|(instruction.op3_value);
-                imm32=(uint32_t)(instruction.op3_value<<2);
-                STR(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
-            }
-
+        {
+            registros[15]+=1;
+            *Mnem=(18<<11)|(instruction.op1_value)<<8|(instruction.op3_value);
+            imm32=(uint32_t)(instruction.op3_value<<2);
+            STR(&registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+        }
          if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
         {
             registros[15]+=1;
             *Mnem=(47<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            STR(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            STR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
         }
     }
-
-  if(strcmp(instruction.mnemonic,"STRB")==0)
+    if(strcmp(instruction.mnemonic,"STRB")==0)
     {
         uint32_t suma;
          if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
@@ -780,27 +776,29 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
                 *Mnem=(14<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
                 imm32=(uint32_t)(instruction.op3_value<<2);
                 suma=registros[instruction.op2_value]+imm32;
-                if((suma>=0x20000000)&&(suma<=0x200000FF)){
-                    STRB(registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
+                if((suma>=0x20000000)&&(suma<=0x200000FF))
+                {
+                    STRB(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
                 }
-                else if(suma>=0x40000000){
-                    IOAccess(suma&0xFF, &registros[instruction.op1_value], 'write');
+                if(suma>=0x40000000)
+                {
+                    IOAccess(suma&0xFF, &registros[instruction.op1_value],Write);
                 }
-
             }
         }
-
-         if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
         {
             registros[15]+=1;
             *Mnem=(42<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
             STRB(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
             suma=registros[instruction.op2_value]+registros[instruction.op3_value];
-                if((suma>=0x20000000)&&(suma<=0x200000FF)){
-                    STRB(registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
-                }
-                else if(suma>=0x40000000){
-                    IOAccess(suma&0xFF, &registros[instruction.op1_value], 'write');
+            if((suma>=0x20000000)&&(suma<=0x200000FF))
+            {
+                STRB(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
+            }
+            if(suma>=0x40000000)
+            {
+                IOAccess(suma&0xFF, &registros[instruction.op1_value],Write);
             }
         }
     }

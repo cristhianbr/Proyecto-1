@@ -13,7 +13,7 @@ void ADDS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la su
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if (*Rp=!Rs)
+   if (*Rp!=Rs)
     {
         flag[V]=1;
     }
@@ -32,7 +32,7 @@ void ADCS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if(*Rp=!Rs)
+    if(*Rp!=Rs)
     {
         flag[V]=1;
     }
@@ -75,7 +75,7 @@ void SUBS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la re
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if (*Rp=!Rs)
+    if (*Rp!=Rs)
     {
         flag[V]=1;
     }
@@ -99,7 +99,7 @@ void SBCS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-    if(*Rp=!Rs)
+    if(*Rp!=Rs)
     {
         flag[V]=1;
     }
