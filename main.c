@@ -87,9 +87,9 @@ int main(void)
     }
     attroff(COLOR_PAIR(1));     	/* DEshabilita los colores Pair 1 */
     endwin();
-
 	free(read.array);
 
-    	                    /* Finaliza el modo curses */
+    /* Finaliza el modo curses */
+
     return 0;
 }

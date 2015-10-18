@@ -10,8 +10,8 @@ ADDS R0,R0,#1
 STRB R3,[R1,#0]
 ADDS R1,R1,#1
 SUBS R2,R2,#1
-BNE #-5       
-B #0
+BNE #-5  
+B #0  
 NOP 
 NOP 
 NOP 

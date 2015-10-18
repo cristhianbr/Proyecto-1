@@ -448,7 +448,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
 
     if(strcmp(instruction.mnemonic,"B")==0)
     {
-        *Mnem=(13<<12)/*(<<8)*/|(instruction.op1_value);
+        *Mnem=(28<<11)|(instruction.op1_value);
         B(&registros[15],instruction.op1_value);
     }
 
