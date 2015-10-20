@@ -769,13 +769,16 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         {
             if(instruction.op3_value<32)
             {
+                uint8_t var1,var2;
                 registros[15]+=1;
                 *Mnem=(14<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
                 imm32=(uint32_t)(instruction.op3_value<<2);
                 suma=registros[instruction.op2_value]+imm32;
+                var1=(uint8_t)(registros[instruction.op2_value]);
+                var2=(uint8_t)(imm32);
                 if((suma>=0x20000000)&&(suma<=0x200000FF))
                 {
-                    STRB(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
+                    STRB(&registros[instruction.op1_value],var1,var2,MemRAM);
                 }
                 if(suma>=0x40000000)
                 {

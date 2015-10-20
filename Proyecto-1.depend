@@ -89,7 +89,7 @@
 	<stdio.h>
 	<wchar.h>
 
-1445355116 source:c:\users\christian\nueva\proyecto-1\decoder.c
+1445356407 source:c:\users\christian\nueva\proyecto-1\decoder.c
 	"decoder.h"
 
 1445110479 c:\users\christian\nueva\proyecto-1\decoder.h
@@ -101,7 +101,7 @@
 1443202358 source:c:\users\christian\nueva\proyecto-1\saltos.c
 	"banderas.h"
 
-1445355116 source:c:\users\christian\nueva\proyecto-1\load-store.c
+1445357271 source:c:\users\christian\nueva\proyecto-1\load-store.c
 	<stdint.h>
 	<stdlib.h>
 

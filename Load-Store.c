@@ -76,7 +76,7 @@ void STR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para alm
 
 }
 
-void STRB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para almacenar 1 byte en la memoria Ram.
+void STRB(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram)//Funcion para almacenar 1 byte en la memoria Ram.
 {
     address=Rm+Rn;
     Ram[address]=(uint8_t)(*Rt);

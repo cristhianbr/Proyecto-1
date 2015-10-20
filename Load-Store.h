@@ -53,7 +53,7 @@ void STR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram);
 *\param Rn Operando 2.
 *\param *Ram Puntero con la direccion de la memoria Ram.
 */
-void STRB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram);
+void STRB(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram);
 /**
 *\brief Funcion para almacenar 2 bytes en la memoria Ram.
 *\param *Rt Puntero con la direccion del registro del que se van a sacar los bytes para almacenar en la memoria Ram.
