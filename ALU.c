@@ -13,7 +13,7 @@ void ADDS(uint32_t *Rp, uint32_t Rm, uint32_t Rn, char *flag)	//funcion de la su
         flag[C]=1;
     }
     else {  flag[C]=0;  }
-   if (*Rp!=Rs)
+    if (*Rp!=Rs)
     {
         flag[V]=1;
     }

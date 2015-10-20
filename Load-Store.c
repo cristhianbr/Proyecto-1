@@ -44,7 +44,7 @@ void LDRSB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)
 		*Rt=Ram[address];
 }
 
-void LDRSH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
+void LDRSH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)
 {
     uint32_t Aux, Aux2,Aux3=~0;
 
@@ -64,7 +64,7 @@ void LDRSH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
 
 }
 
-void STR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
+void STR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)
 {
     address=Rm+Rn;
     Ram[address+3]=(uint8_t)(*Rt>>24);
@@ -74,13 +74,13 @@ void STR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
 
 }
 
-void STRB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
+void STRB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)
 {
     address=Rm+Rn;
     Ram[address]=(uint8_t)(*Rt);
 }
 
-void STRH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint32_t *Ram)
+void STRH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)
 {
      Ram[address+1]=(uint8_t)(*Rt>>8);
      Ram[address]=(uint8_t)(*Rt);

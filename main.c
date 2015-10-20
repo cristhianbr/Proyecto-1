@@ -83,15 +83,13 @@ int main(void)
                 ACS_ULCORNER, ACS_URCORNER,
                 ACS_LLCORNER, ACS_LRCORNER	);
         refresh();	            /* Imprime en la pantalla Sin esto el printw no es mostrado */
-        instruction = getInstruction(instructions[reg[15]]);
-        decodeInstruction(instruction, reg, bandera, MemRAM, &Mnem);
         INT(irq, reg, MemRAM, bandera, &m);
     }
     attroff(COLOR_PAIR(1));     	/* DEshabilita los colores Pair 1 */
     endwin();
-
 	free(read.array);
 
-    	                    /* Finaliza el modo curses */
+    /* Finaliza el modo curses */
+
     return 0;
 }
