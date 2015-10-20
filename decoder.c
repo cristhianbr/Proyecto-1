@@ -5,6 +5,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     // instruction.op1_value --> Valor primer operando
     // instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
     // ... Igual para los otros operandos
+     //A partir de este punto se utiliza la variable *Mnem para mostrar en pantalla las instrucciones en hexadesimal
 	uint32_t imm32;
 	if(strcmp(instruction.mnemonic,"ADDS")==0)   //Si la intruccion es ADD :
     {
@@ -599,7 +600,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             SBCS(&registros[instruction.op1_value],registros[instruction.op2_value],instruction.op3_value,flag);
         }
     }
-    if (strcmp(instruction.mnemonic,"PUSH")==0)
+    if (strcmp(instruction.mnemonic,"PUSH")==0)//Funcion para guardar el contenido de registros en la memoria Ram
     {
         int i;int16_t aux;
         for(i=0;i<=15;i++)
@@ -610,7 +611,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         *Mnem=(aux&0x00FF)|(aux&0x2000);
         PUSH(registros,MemRAM, instruction.registers_list);
     }
-    if (strcmp(instruction.mnemonic,"POP")==0)
+    if (strcmp(instruction.mnemonic,"POP")==0)//Funcion para sacar contenidos de la memoria Ram
     {
         int i;int16_t aux;
         for(i=0;i<=15;i++)
@@ -622,47 +623,47 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         POP(registros,MemRAM, instruction.registers_list);
     }
 
-    if(strcmp(instruction.mnemonic,"LDR")==0)
+    if(strcmp(instruction.mnemonic,"LDR")==0)//Funcion para cargar contenidos de 4 posiciones de la memoria Ram
     {
-        if((instruction.op3_type=='#')&&(instruction.op2_type=='R')&&(instruction.op2_value==13))
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R')&&(instruction.op2_value==13))//si el parametro 3 es un numero, el dos un registro y es SP
         {
             if(instruction.op3_value<256)
             {
                 registros[15]+=1;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
+                LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
             }
         }
-        if((instruction.op3_type=='#')&&(instruction.op2_type=='R')&&(instruction.op2_value==15))
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R')&&(instruction.op2_value==15))//si el parametro 3 es un numero, el dos un registro y es PC
         {
             if(instruction.op3_value<256)
             {
                 registros[15]+=1;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
+                LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
             }
         }
-        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))//si el parametro 3 es un numero y el dos un registro
         {
             if(instruction.op3_value<32)
             {
                 registros[15]+=1;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
+                LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
             }
         }
-        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
-        {
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))//si el parametro 3 es un registro y el dos un registro
+            {
             registros[15]+=1;
             *Mnem=(44<<9)|(instruction.op1_value)|(instruction.op2_value<<3)|(instruction.op3_value<<6);
-            LDR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
         }
     }
-
-    if(strcmp(instruction.mnemonic,"LDRB")==0)
+    if(strcmp(instruction.mnemonic,"LDRB")==0)//Funcion para cargar contenido de una posicion de la memoria Ram
     {
         uint32_t suma;
-        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))//si el parametro 3 es un numero y el dos un registro
         {
             if(instruction.op3_value<32)
             {
@@ -672,7 +673,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
                 suma=registros[instruction.op2_value]+imm32;
                 if((suma>=0x20000000)&&(suma<=0x200000FF))
                 {
-                    LDRB(&registros[instruction.op1_value],(registros[instruction.op2_value]&0xFF),imm32,MemRAM);
+                    LDRB(&registros[instruction.op1_value],(registros[instruction.op2_value]&0xFF),imm32&0xFF,MemRAM);
                 }
                 if(suma>=0x40000000)
                 {
@@ -680,11 +681,10 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
                 }
             }
         }
-        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))//si el parametro 3 es un registro y el dos un registro
         {
             registros[15]+=1;
             *Mnem=(46<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            LDR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
             suma=registros[instruction.op2_value]+registros[instruction.op3_value];
             if((suma>=0x20000000)&&(suma<=0x200000FF))
             {
@@ -696,77 +696,76 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             }
         }
     }
-    if(strcmp(instruction.mnemonic,"LDRH")==0)
+    if(strcmp(instruction.mnemonic,"LDRH")==0)//Funcion para cargar contenidos de 2 posiciones de la memoria Ram
     {
-        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))//si el parametro 3 es un numero y el dos un registro
         {
             if(instruction.op3_value<32)
             {
                 *Mnem=(17<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
                 registros[15]+=1;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                LDRH(&registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+                LDRH(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
             }
         }
-        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))//si el parametro 3 es un registro y el dos un registro
         {
             registros[15]+=1;
             *Mnem=(45<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            LDRH(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            LDRH(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
         }
-
     }
 
-    if(strcmp(instruction.mnemonic,"LDRSB")==0)
+    if(strcmp(instruction.mnemonic,"LDRSB")==0)//Funcion para cargar contenido de una posicion de la memoria Ram y hacer extension de signo */
     {
-        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))//si el parametro 3 es un registro y el dos un registro
         {
             registros[15]+=1;
             *Mnem=(43<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            LDRSB(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            LDRSB(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
         }
     }
 
-    if(strcmp(instruction.mnemonic,"LDRSH")==0)
+    if(strcmp(instruction.mnemonic,"LDRSH")==0)//Funcion para cargar contenidos de 2 posiciones de la memoria Ram y hacer extension */
     {
-        if((instruction.op2_type=='R')&&(instruction.op3_type=='R'))
+        if((instruction.op2_type=='R')&&(instruction.op3_type=='R'))//si el parametro 3 es un registro y el dos un registro
         {
             registros[15]+=1;
             *Mnem=(47<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            LDRSH(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            LDRSH(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
         }
     }
 
-    if(strcmp(instruction.mnemonic,"STR")==0)
+    if(strcmp(instruction.mnemonic,"STR")==0)//Funcion para almacenar 4 bytes en la memoria Ram */
     {
-        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))//si el parametro 3 es un numero y el dos un registro
         {
             if(instruction.op3_value<32)
             {
                 registros[15]+=1;
                 *Mnem=(12<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                STR(&registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+                STR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
             }
             if(instruction.op3_value<256)
             {
                 registros[15]+=1;
                 *Mnem=(18<<11)|(instruction.op1_value)<<8|(instruction.op3_value);
                 imm32=(uint32_t)(instruction.op3_value<<2);
-                STR(&registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
+                STR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
             }
         }
-        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))//si el parametro 3 es un registro y el dos un registro
         {
             registros[15]+=1;
             *Mnem=(47<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            STR(&registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
+            STR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,registros[instruction.op3_value]&0xFF,MemRAM);
         }
     }
-    if(strcmp(instruction.mnemonic,"STRB")==0)
+    if(strcmp(instruction.mnemonic,"STRB")==0)//Funcion para almacenar 1 byte en la memoria Ram */
     {
         uint32_t suma;
-        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))//si el parametro 3 es un numero y el dos un registro
         {
             if(instruction.op3_value<32)
             {
@@ -776,19 +775,19 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
                 suma=registros[instruction.op2_value]+imm32;
                 if((suma>=0x20000000)&&(suma<=0x200000FF))
                 {
-                    STRB(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32,MemRAM);
+                    STRB(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
                 }
                 if(suma>=0x40000000)
                 {
-                    IOAccess(suma&0xFF, &registros[instruction.op1_value],Write);
+                    uint8_t data = registros[instruction.op1_value];
+                    IOAccess(suma&0xFF, &data,Write);
                 }
             }
         }
-        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))//si el parametro 3 es un registro y el dos un registro
         {
             registros[15]+=1;
             *Mnem=(42<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-            STRB(registros[instruction.op1_value],registros[instruction.op2_value],registros[instruction.op3_value],MemRAM);
             suma=registros[instruction.op2_value]+registros[instruction.op3_value];
             if((suma>=0x20000000)&&(suma<=0x200000FF))
             {
@@ -800,9 +799,9 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             }
         }
     }
-    if(strcmp(instruction.mnemonic,"STRH")==0)
+    if(strcmp(instruction.mnemonic,"STRH")==0)//Funcion para almacenar 2 bytes en la memoria Ram
     {
-        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='#')&&(instruction.op2_type=='R'))//si el parametro 3 es un numero y el dos un registro
         {
             if(instruction.op3_value<32)
             {
@@ -812,7 +811,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
                 STRH(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
             }
         }
-        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))
+        if((instruction.op3_type=='R')&&(instruction.op2_type=='R'))//si el parametro 3 es un registro y el dos un registro
         {
             registros[15]+=1;
             *Mnem=(41<<9)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;

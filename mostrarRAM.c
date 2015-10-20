@@ -3,7 +3,7 @@
 #include "curses.h"
 #include "mostrarRAM.h"
 
-void mostrar_ram(uint8_t *MemRAM)
+void mostrar_ram(uint8_t *MemRAM)//Funcion para mostrar la memoria Ram.
 {
     int i,j,k=0,a=22,b=-5;
 	for(i=0;i<256;i+=64)          //se crea un ciclo for para dar valores a la memoria Ram en pantalla
