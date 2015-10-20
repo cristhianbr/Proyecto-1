@@ -1,4 +1,8 @@
 #include "decoder.h"
+#include "io.h"
+#define Read	1
+#define Write	0
+
 
 void decodeInstruction(instruction_t instruction, uint32_t *registros, char *flag, uint8_t *MemRAM, uint16_t *Mnem)
 {
@@ -649,7 +653,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             if(instruction.op3_value<32)
             {
                 registros[15]+=1;
-                imm32=(uint32_t)(instruction.op3_value<<2);
+                imm32=(uint32_t)(instruction.op3_value);
                 LDR(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
             }
         }
@@ -704,7 +708,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             {
                 *Mnem=(17<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
                 registros[15]+=1;
-                imm32=(uint32_t)(instruction.op3_value<<2);
+                imm32=(uint32_t)(instruction.op3_value<<1);
                 LDRH(&registros[instruction.op1_value],registros[instruction.op2_value]&0xFF,imm32&0xFF,MemRAM);
             }
         }
@@ -771,7 +775,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             {
                 registros[15]+=1;
                 *Mnem=(14<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-                imm32=(uint32_t)(instruction.op3_value<<2);
+                imm32=(uint32_t)(instruction.op3_value);
                 suma=registros[instruction.op2_value]+imm32;
                 if((suma>=0x20000000)&&(suma<=0x200000FF))
                 {
@@ -807,7 +811,7 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
             {
                 registros[15]+=1;
                 *Mnem=(16<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
-                imm32=(uint32_t)(instruction.op3_value<<2);
+                imm32=(uint32_t)(instruction.op3_value<<1);
                 STRH(registros[instruction.op1_value],registros[instruction.op2_value],imm32,MemRAM);
             }
         }

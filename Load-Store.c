@@ -4,7 +4,7 @@
 uint32_t address=0;
 
 
-void LDR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para cargar contenidos de 4 posiciones de la memoria Ram.
+void LDR(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram)//Funcion para cargar contenidos de 4 posiciones de la memoria Ram.
 {
     address=Rm+Rn;
     *Rt=Ram[address+3]<<24;
@@ -13,20 +13,20 @@ void LDR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para car
     *Rt=(*Rt)|(Ram[address]);
 }
 
-void LDRB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para cargar contenido de una posicion de la memoria Ram.
+void LDRB(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram)//Funcion para cargar contenido de una posicion de la memoria Ram.
 {
     address=Rm+Rn;
     *Rt=(uint32_t) (Ram[address]);
 }
 
-void LDRH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para cargar contenidos de 2 posiciones de la memoria Ram.
+void LDRH(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram)//Funcion para cargar contenidos de 2 posiciones de la memoria Ram.
 {
     address=Rm+Rn;
     *Rt=Ram[address];
     *Rt=(uint32_t)((*Rt)|(Ram[address+1]<<8));
 }
 
-void LDRSB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para cargar contenido de una posicion de la memoria Ram y hacer extension de signo.
+void LDRSB(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram)//Funcion para cargar contenido de una posicion de la memoria Ram y hacer extension de signo.
 {
     uint32_t Aux, Aux2, Aux3=~0;
 
@@ -44,7 +44,7 @@ void LDRSB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para c
 		*Rt=Ram[address];
 }
 
-void LDRSH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para cargar contenidos de 2 posiciones de la memoria Ram y hacer extension.
+void LDRSH(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram)//Funcion para cargar contenidos de 2 posiciones de la memoria Ram y hacer extension.
 
 {
     uint32_t Aux, Aux2,Aux3=~0;
@@ -66,7 +66,7 @@ void LDRSH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para c
 }
 
 
-void STR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para almacenar 4 bytes en la memoria Ram.
+void STR(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram)//Funcion para almacenar 4 bytes en la memoria Ram.
 {
     address=Rm+Rn;
     Ram[address+3]=(uint8_t)(*Rt>>24);
@@ -76,13 +76,13 @@ void STR(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para alm
 
 }
 
-void STRB(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para almacenar 1 byte en la memoria Ram.
+void STRB(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram)//Funcion para almacenar 1 byte en la memoria Ram.
 {
     address=Rm+Rn;
     Ram[address]=(uint8_t)(*Rt);
 }
 
-void STRH(uint32_t *Rt, uint32_t Rm, uint32_t Rn, uint8_t *Ram)//Funcion para almacenar 2 bytes en la memoria Ram.
+void STRH(uint32_t *Rt, uint8_t Rm, uint8_t Rn, uint8_t *Ram)//Funcion para almacenar 2 bytes en la memoria Ram.
 
 {
      Ram[address+1]=(uint8_t)(*Rt>>8);

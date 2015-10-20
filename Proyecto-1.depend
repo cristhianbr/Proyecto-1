@@ -305,49 +305,50 @@
 
 1445034500 c:\users\christian\nueva\proyecto-1\int.h
 
-1445148584 source:c:\users\luis eduardo\desktop\proyecto-1\alu.c
+1445363987 source:c:\users\luis eduardo\desktop\proyecto-1\alu.c
 	"ALU.h"
 	"banderas.h"
 
-1445148584 c:\users\luis eduardo\desktop\proyecto-1\alu.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\alu.h
 	<stdint.h>
 
-1445148584 c:\users\luis eduardo\desktop\proyecto-1\banderas.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\banderas.h
 	<stdint.h>
 
-1445148584 source:c:\users\luis eduardo\desktop\proyecto-1\banderas.c
+1445363987 source:c:\users\luis eduardo\desktop\proyecto-1\banderas.c
 	"banderas.h"
 	<math.h>
 
-1445151320 source:c:\users\luis eduardo\desktop\proyecto-1\decoder.c
+1445364575 source:c:\users\luis eduardo\desktop\proyecto-1\decoder.c
 	"decoder.h"
+	"io.h"
 
-1445148584 c:\users\luis eduardo\desktop\proyecto-1\decoder.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\decoder.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
 	<stdint.h>
 
-1445148584 source:c:\users\luis eduardo\desktop\proyecto-1\instruccionesdesplazamiento.c
+1445363987 source:c:\users\luis eduardo\desktop\proyecto-1\instruccionesdesplazamiento.c
 	"InstruccionesDesplazamiento.h"
 	"banderas.h"
 
-1445148584 c:\users\luis eduardo\desktop\proyecto-1\instruccionesdesplazamiento.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\instruccionesdesplazamiento.h
 	<stdint.h>
 
-1445148584 source:c:\users\luis eduardo\desktop\proyecto-1\io.c
+1445366839 source:c:\users\luis eduardo\desktop\proyecto-1\io.c
 	"io.h"
 	"curses.h"
 
-1445148584 c:\users\luis eduardo\desktop\proyecto-1\io.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\io.h
 	<stdint.h>
 	<curses.h>
 
-1445151269 source:c:\users\luis eduardo\desktop\proyecto-1\load-store.c
+1445364288 source:c:\users\luis eduardo\desktop\proyecto-1\load-store.c
 	<stdint.h>
 	<stdlib.h>
 
-1445148584 source:c:\users\luis eduardo\desktop\proyecto-1\main.c
+1445366712 source:c:\users\luis eduardo\desktop\proyecto-1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"registros.h"
@@ -359,19 +360,19 @@
 	"mostrarRAM.h"
 	"io.h"
 
-1445148584 c:\users\luis eduardo\desktop\proyecto-1\registros.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\registros.h
 	<stdint.h>
 
-1445148584 c:\users\luis eduardo\desktop\proyecto-1\curses.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\curses.h
 	<stdarg.h>
 	<stddef.h>
 	<stdio.h>
 	<wchar.h>
 
-1445148584 c:\users\luis eduardo\desktop\proyecto-1\mostrarram.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\mostrarram.h
 	<stdint.h>
 
-1445150509 source:c:\users\luis eduardo\desktop\proyecto-1\mostrarram.c
+1445363987 source:c:\users\luis eduardo\desktop\proyecto-1\mostrarram.c
 	<stdint.h>
 	<stdlib.h>
 	"curses.h"
@@ -379,19 +380,19 @@
 
 1445023425 source:c:\users\luis eduardo\desktop\proyecto-1\ports.c
 
-1445150455 source:c:\users\luis eduardo\desktop\proyecto-1\ramtest.c
+1445363987 source:c:\users\luis eduardo\desktop\proyecto-1\ramtest.c
 	<stdint.h>
 	<stdlib.h>
 	"ramtest.h"
 
-1445148584 c:\users\luis eduardo\desktop\proyecto-1\ramtest.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\ramtest.h
 
-1445148584 source:c:\users\luis eduardo\desktop\proyecto-1\registros.c
+1445363987 source:c:\users\luis eduardo\desktop\proyecto-1\registros.c
 	"registros.h"
 	<stdint.h>
 	"curses.h"
 
-1445148584 source:c:\users\luis eduardo\desktop\proyecto-1\saltos.c
+1445363987 source:c:\users\luis eduardo\desktop\proyecto-1\saltos.c
 	"banderas.h"
 
 1445146579 source:d:\git\git\carpetapro\proyecto-1\alu.c
@@ -502,10 +503,10 @@
 
 1445354810 d:\git\git\carpetapro\proyecto-1\int.h
 
-1445150776 source:c:\users\luis eduardo\desktop\proyecto-1\int.c
+1445363987 source:c:\users\luis eduardo\desktop\proyecto-1\int.c
 	<stdint.h>
 	<stdlib.h>
 	"INT.h"
 
-1445149042 c:\users\luis eduardo\desktop\proyecto-1\int.h
+1445363987 c:\users\luis eduardo\desktop\proyecto-1\int.h
 

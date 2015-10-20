@@ -61,6 +61,11 @@ int main(void)
     {
         ch = getch();            /* Espera entrada del usuario */
         clear();
+        showPorts();
+        if(ch=='1')
+        {
+            changePinPortB(0,HIGH);
+        }
         instruction = getInstruction(instructions[reg[15]]);
         decodeInstruction(instruction, reg, bandera, MemRAM, &Mnem);
         mostrar_registro(reg);
@@ -77,7 +82,6 @@ int main(void)
         move(4, 55); printw("Emulador ARM Cortex-M0");
         move(5, 55); printw("Presione q para Salir");
         mostrar_ram(MemRAM);
-        initIO();showPorts();
         border( ACS_VLINE, ACS_VLINE,
                 ACS_HLINE, ACS_HLINE,
                 ACS_ULCORNER, ACS_URCORNER,

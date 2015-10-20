@@ -32,6 +32,7 @@ void changePinPortB(uint8_t pin, uint8_t value)
 	if( ( (PORTB.Pins & (1<<pin)) != (value<<pin) ) &&
 		( PORTB.Interrupts & (1<<pin) ) )
 		irq[pin+8] = 1;
+        move(21, 20); printw(".%d.",irq[8]);
 
 	PORTB.Pins = (PORTB.Pins & ~(1<<pin)) | value<<pin;
 }
@@ -93,6 +94,7 @@ void IOAccess(uint8_t address, uint8_t* data, uint8_t r_w)
 				break;
 		}
 	}
+	move(20, 20); printw(".%0.2X.",PORTB.DDR);
 }
 
 void showPorts(void)
