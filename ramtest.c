@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "ramtest.h"
 
-void PUSH(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
+void PUSH(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)//Funcion para guardar el contenido de registros en la memoria Ram.
 {
     int i,j=0;
     uint32_t address;
@@ -29,7 +29,7 @@ void PUSH(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
     regs[13]=regs[13]-(j*4);
 }
 
-void POP(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
+void POP(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)//Funcion para sacar contenidos de la memoria Ram.
 {
     int i,j=0;
     uint32_t address;
@@ -51,7 +51,7 @@ void POP(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)
     }
     regs[13]=regs[13]+(j*4);
 }
-void PUSH_INT(uint32_t *regs, uint8_t *MemRAM, char *flags)
+void PUSH_INT(uint32_t *regs, uint8_t *MemRAM, char *flags)//Funcion para guardar contenidos de registros en la memoria Ram y guardar las banderas.
 {
     uint32_t address;
     address=regs[13]-44;
@@ -68,7 +68,7 @@ void PUSH_INT(uint32_t *regs, uint8_t *MemRAM, char *flags)
     MemRAM[address]=(flags[3]); MemRAM[address+1]=(flags[3]>>8);    MemRAM[address+2]=(flags[3]>>16);   MemRAM[address+3]=(flags[3]>>24);   address=address+4;
     regs[13]=regs[13]-44;
 }
-void POP_INT(uint32_t *regs, uint8_t *MemRAM, char *flags)
+void POP_INT(uint32_t *regs, uint8_t *MemRAM, char *flags)//Funcion para sacar contenidos de la memoria Ram y guardar las banderas.
 {
     uint32_t address;
     address=regs[13];
