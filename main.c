@@ -10,14 +10,16 @@
 #include "io.h"
 
 extern uint8_t irq[16];
+extern port_t PORTA;
+extern port_t PORTB;
 
 int main(void)
 {
     uint32_t reg[16]={0};       //se creo un arreglo de 13 variables de 32 bits para los 13 registros
 	char bandera[4]={0};        //La bandera se definio como un arreglo de 4 variables siendo la primera la bandera de negativo
-    int ch=0,j=0;
+    int ch=0,j=0,z;
     uint16_t Mnem=0x0;
-    uint8_t MemRAM[256],m=0;;
+    uint8_t MemRAM[256],m=0;
     reg[13]=0x100;
     for(j=0;j<=0xff;j++)
     {
@@ -60,7 +62,12 @@ int main(void)
 	while(ch != 'q')
     {
         ch = getch();            /* Espera entrada del usuario */
+        if(ch=='a'||ch=='b')
+        {
+           teclas(ch);
+        }
         clear();
+        showPorts();
         instruction = getInstruction(instructions[reg[15]]);
         decodeInstruction(instruction, reg, bandera, MemRAM, &Mnem);
         mostrar_registro(reg);
@@ -76,8 +83,9 @@ int main(void)
         move(13, 40); printw("SP=%X\n",reg[13]);
         move(4, 55); printw("Emulador ARM Cortex-M0");
         move(5, 55); printw("Presione q para Salir");
+        move(6, 55); printw("Presione a para modificar el estado del puerto A");
+        move(7, 55); printw("Presione b para modificar el estado del puerto B");
         mostrar_ram(MemRAM);
-        initIO();showPorts();
         border( ACS_VLINE, ACS_VLINE,
                 ACS_HLINE, ACS_HLINE,
                 ACS_ULCORNER, ACS_URCORNER,

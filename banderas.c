@@ -1,5 +1,4 @@
 #include "banderas.h"
-#include <math.h>
 #define N 0
 #define Z 1
 
