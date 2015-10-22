@@ -4,21 +4,28 @@
 
 void INT(uint8_t *irq, uint32_t *reg, uint8_t *MemRam, char *flags, uint8_t *m)//Funcion para cargar los registros y banderas en la memoria Ram cuando se ejecuta una interrupcion.
 {
-    uint8_t i;
-    for(i=0;i<=15;i++)
+    int i;
+    if(*m==1)
     {
-        if((irq[i]==1)&&(m==0))
+        if(reg[15]==0xffffffff)
         {
-            m=1;
-            PUSH_INT(reg,MemRam,flags);
-            reg[15]=i+1;
-            reg[14]=0xfffffff;
-            break;
+            *m=0;
+            POP_INT(reg,MemRam,flags);
         }
     }
-    if(reg[15]==0xfffffff)
+    else
     {
-        m=0;
-        POP_INT(reg,MemRam,flags);
+        for(i=0;i<16;i++)
+        {
+            if(irq[i] == 1)
+            {
+                PUSH_INT(reg,MemRam,flags);
+                reg[15]=i+1;
+                irq[i]=0;
+                reg[14]=0xffffffff;
+                *m=1;
+                break;
+            }
+        }
     }
 }

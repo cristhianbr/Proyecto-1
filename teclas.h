@@ -1,1 +1,1 @@
-void teclas(char puerto);
+void teclas(char puerto, uint8_t *m);

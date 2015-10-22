@@ -6,7 +6,7 @@
 extern port_t PORTA;
 extern port_t PORTB;
 
-void teclas(char puerto)
+void teclas(char puerto, uint8_t *m)
 {
     uint8_t pin;
     pin = getch();

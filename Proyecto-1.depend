@@ -41,7 +41,7 @@
 1443221688 c:\users\christian\nueva\proyecto-1\alu.h
 	<stdint.h>
 
-1445387477 source:c:\users\christian\nueva\proyecto-1\main.c
+1445456352 source:c:\users\christian\nueva\proyecto-1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"registros.h"
@@ -88,7 +88,7 @@
 	<stdio.h>
 	<wchar.h>
 
-1445383899 source:c:\users\christian\nueva\proyecto-1\decoder.c
+1445455897 source:c:\users\christian\nueva\proyecto-1\decoder.c
 	"decoder.h"
 	"io.h"
 
@@ -105,7 +105,7 @@
 	<stdint.h>
 	<stdlib.h>
 
-1445355116 source:c:\users\christian\nueva\proyecto-1\ramtest.c
+1445459857 source:c:\users\christian\nueva\proyecto-1\ramtest.c
 	<stdint.h>
 	<stdlib.h>
 	"ramtest.h"
@@ -244,7 +244,7 @@
 	"io.h"
 	"curses.h"
 
-1445385886 source:c:\users\christian\nueva\proyecto-1\io.c
+1445447468 source:c:\users\christian\nueva\proyecto-1\io.c
 	"io.h"
 	"curses.h"
 
@@ -298,7 +298,7 @@
 	<stdio.h>
 	<wchar.h>
 
-1445355116 source:c:\users\christian\nueva\proyecto-1\int.c
+1445456248 source:c:\users\christian\nueva\proyecto-1\int.c
 	<stdint.h>
 	<stdlib.h>
 	"INT.h"
@@ -510,11 +510,11 @@
 
 1445363987 c:\users\luis eduardo\desktop\proyecto-1\int.h
 
-1445391299 source:c:\users\christian\nueva\proyecto-1\teclas.c
+1445449492 source:c:\users\christian\nueva\proyecto-1\teclas.c
 	<stdint.h>
 	<stdlib.h>
 	"teclas.h"
 	"io.h"
 
-1445390433 c:\users\christian\nueva\proyecto-1\teclas.h
+1445448181 c:\users\christian\nueva\proyecto-1\teclas.h
 

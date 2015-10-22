@@ -556,14 +556,14 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
     if(strcmp(instruction.mnemonic,"BX")==0) /*Esta funcion guardo el contenido de un registro en el PC y pone a LR en la siguiente instruccion teniendo en
                                              cuenta la consideracion de que PC emplea 32 bits*/
     {
-        if(instruction.op1_type=='L')
-        {
-            BX(&registros[15],registros[14]);
-        }
-        else
+        if(instruction.op1_type=="R ")
         {
             *Mnem=(142<<7)|(instruction.op1_value<<3);
             BX(&registros[15],registros[instruction.op1_value]);
+        }
+        else
+        {
+            BX(&registros[15],registros[14]);
         }
     }
 
@@ -773,7 +773,6 @@ void decodeInstruction(instruction_t instruction, uint32_t *registros, char *fla
         {
             if(instruction.op3_value<32)
             {
-                uint8_t var1,var2;
                 registros[15]+=1;
                 *Mnem=(14<<11)|(instruction.op1_value)|(instruction.op2_value)<<3|(instruction.op3_value)<<6;
                 imm32=(uint32_t)(instruction.op3_value);

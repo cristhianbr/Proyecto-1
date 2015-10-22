@@ -45,7 +45,7 @@ void POP(uint32_t *regs, uint8_t *MemRAM, uint8_t *Reg)//Funcion para sacar cont
     {
         if(Reg[i]==1)
         {
-            regs[i]=(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>24);
+            regs[i]=((MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24));
             address=address+4;
         }
     }
@@ -72,16 +72,16 @@ void POP_INT(uint32_t *regs, uint8_t *MemRAM, char *flags)//Funcion para sacar c
 {
     uint32_t address;
     address=regs[13];
-    regs[0] =(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    regs[1] =(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    regs[2] =(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    regs[3] =(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    regs[12]=(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    regs[14]=(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    regs[15]=(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    flags[0]=(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    flags[1]=(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    flags[2]=(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
-    flags[3]=(MemRAM[address]) | (MemRAM[address+1]>>8) | (MemRAM[address+2]>>16) | (MemRAM[address+3]>>32); address=address+4;
+    regs[0] =(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    regs[1] =(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    regs[2] =(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    regs[3] =(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    regs[12]=(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    regs[14]=(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    regs[15]=(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    flags[0]=(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    flags[1]=(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    flags[2]=(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
+    flags[3]=(MemRAM[address]) | (MemRAM[address+1]<<8) | (MemRAM[address+2]<<16) | (MemRAM[address+3]<<24); address=address+4;
     regs[13]=regs[13]+44;
 }

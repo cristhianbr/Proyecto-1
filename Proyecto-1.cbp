@@ -88,6 +88,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="saltos.h" />
+		<Unit filename="teclas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="teclas.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

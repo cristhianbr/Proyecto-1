@@ -64,14 +64,15 @@ int main(void)
         ch = getch();            /* Espera entrada del usuario */
         if(ch=='a'||ch=='b')
         {
-           teclas(ch);
+           teclas(ch,&m);
         }
         clear();
+        INT(irq, reg, MemRAM, bandera, &m);
         showPorts();
+        move(2, 15); printw("%s",instructions[reg[15]]);
         instruction = getInstruction(instructions[reg[15]]);
         decodeInstruction(instruction, reg, bandera, MemRAM, &Mnem);
         mostrar_registro(reg);
-        move(2, 15); printw("%s",instructions[reg[15]-1]);
         move(2, 40); printw("Instruccion --> 0x%.4X",Mnem);
         move(4, 40); printw("Banderas");
         move(6, 40); printw("N=%d\n",bandera[0]);
@@ -79,7 +80,7 @@ int main(void)
         move(8, 40); printw("C=%d\n",bandera[2]);
         move(9, 40); printw("V=%d\n",bandera[3]);
         move(11, 40); printw("PC=%X\n",reg[15]*2);
-        move(12, 40); printw("LR=%X\n",reg[14]*2);
+        move(12, 40); printw("LR=%X\n",reg[14]);
         move(13, 40); printw("SP=%X\n",reg[13]);
         move(4, 55); printw("Emulador ARM Cortex-M0");
         move(5, 55); printw("Presione q para Salir");
@@ -91,7 +92,6 @@ int main(void)
                 ACS_ULCORNER, ACS_URCORNER,
                 ACS_LLCORNER, ACS_LRCORNER	);
         refresh();	            /* Imprime en la pantalla Sin esto el printw no es mostrado */
-        INT(irq, reg, MemRAM, bandera, &m);
     }
     attroff(COLOR_PAIR(1));     	/* DEshabilita los colores Pair 1 */
     endwin();
